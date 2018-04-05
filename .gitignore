@@ -25,4 +25,4 @@
 *.out
 *.synctex.gz
 
-*/temp/*
+responses/rr*/temp/
