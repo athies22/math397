@@ -13,6 +13,8 @@
 *.dvi
 *.glg
 *.gls
+*.fdb_latexmk
+*.fls
 *.ilg
 *.ind
 *.lof
@@ -22,3 +24,5 @@
 *.mtc1
 *.out
 *.synctex.gz
+
+*/temp/*
