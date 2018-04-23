@@ -1,184 +1,78 @@
 %!TEX output_directory = temp
-\documentclass[letterpaper, 12pt]{amsart}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%% boilerplate packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\usepackage{amsmath,amssymb,amsthm}
-	\usepackage[mathscr]{euscript}
-	\usepackage{enumerate}
-	\usepackage{graphicx}
-	\usepackage{mathrsfs}
-	\usepackage{color}
-	\usepackage{hyperref}
-	\usepackage{verbatim}
-	\usepackage{stmaryrd}
-	\usepackage[margin=1.25in]{geometry}
+\documentclass[12pt]{article}   % Nicer than default article style:  less flashy headings, etc.
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%% rename the abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% \renewcommand{\abstractname}{Introduction}
+\usepackage{amsmath,amsthm}     % Handy math stuff, theorem environments.
+\usepackage{amssymb}            % Fancy math symbols.
+\usepackage{euscript}           % Nice script font.
+\usepackage{graphicx,enumerate}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% sets %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%% sets 
-		\DeclareMathOperator{\N}{\mathbb{N}}
-		\DeclareMathOperator{\Z}{\mathbb{Z}}
-		\DeclareMathOperator{\Zp}{\mathbb{Z}^{+}}
-		\DeclareMathOperator{\Q}{\mathbb{Q}}
-		\DeclareMathOperator{\Qp}{\mathbb{Q}^{+}}
-		\DeclareMathOperator{\Qc}{\mathbb{Q}^{c}}
-		\DeclareMathOperator{\R}{\mathbb{R}}
-		\DeclareMathOperator{\Rp}{\mathbb{R}^{+}}
-		\DeclareMathOperator{\C}{\mathbb{C}}
-		\DeclareMathOperator{\Cnon}{\mathbb{C}^{\times}}
-		%% powerset of a set
-		\DeclareMathOperator{\pset}{\mathcal{P}}
-		%% set of continuous functions in a certain variable
-		\DeclareMathOperator{\cont}{\mathscr{C}}
-		%% set of functions in a certain variable
-		\DeclareMathOperator{\func}{\mathscr{F}}
-		
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% linear algebra %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%% linear span
-		\DeclareMathOperator{\Ell}{\mathscr{L}}
-		%% bold vectors with arrows, and bold matrices
-		\newcommand{\bmat}[1]{{\mathbf{#1}}}
-		\newcommand{\bvec}[1]{{\vec{\mathbf{#1}}}}
-		%% independent vectors/matrices
-		\DeclareMathOperator{\ind}{\perp\!\!\!\perp}
-		%% order
-		\DeclareMathOperator{\ord}{\text{ord}}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%% probability & statistics %%%%%%%%%%%%%%%%%%%%%%%%%
-		%% probability, expectation, variance, etc.
-		\renewcommand{\Pr}{\mathbb{P}}
-		\DeclareMathOperator{\E}{\mathbb{E}}
-		\DeclareMathOperator{\var}{\rm Var}
-		\DeclareMathOperator{\sd}{\rm SD}
-		\DeclareMathOperator{\cov}{\rm Cov}
-		\DeclareMathOperator{\SE}{\rm SE}
-		\DeclareMathOperator{\ssreg}{{\rm SS}_{{\rm Reg}}}
-		\DeclareMathOperator{\ssr}{{\rm SS}_{{\rm Res}}}
-		\DeclareMathOperator{\sst}{{\rm SS}_{{\rm Tot}}}
+% Don't force the bottoms of the pages to be at the same spot:
+\raggedbottom
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% congruences %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% bracket notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		% I first used this for principal ideals, that is why the abbreviation is pid
-		\newcommand{\pid}[1]{\langle #1 \rangle}
+% Put sections, but not subsections, into the table of contents:
+\setcounter{tocdepth}{1}
+% Number sections, but not subsections.
+\setcounter{secnumdepth}{1}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% fatdot notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\makeatletter
-			\newcommand*\fatdot{\mathpalette\fatdot@{.5}}
-			\newcommand*\fatdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
-		\makeatother
+% Some theorem-like environments, all numbered together starting at 1 in each section.
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% use pretty letters %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\DeclareMathOperator{\ep}{\varepsilon}
-		\DeclareMathOperator{\ph}{\varphi}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\lline}[1]{\overleftrightarrow{#1}}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%% stolen from Jeske/Dugger %%%%%%%%%%%%%%%%%%%%%%%%%
-	% Some theorem-like environments, all numbered together starting at 1
-	% in each section.
-
-	% The default \theoremstyle is bold headings and italic body text.
-	\newtheorem{thm}{Theorem}[section]
-	\newtheorem{defn}[thm]{Definition}
-	\newtheorem{prop}[thm]{Proposition}
-	\newtheorem{claim}[thm]{Claim}
-	\newtheorem{cor}[thm]{Corollary}
-	\newtheorem{lemma}[thm]{Lemma}
-
-	\theoremstyle{definition}  % Bold headings and Roman body text.
-	\newtheorem{example}[thm]{Example}
-	\newtheorem{examples}[thm]{Examples}
-	\newtheorem{exercise}[thm]{Exercise}
-	\newtheorem{note}[thm]{Note}
-	\newtheorem{remark}[thm]{Remark}
-	\newtheorem{remarks}[thm]{Remarks}
-	\newtheorem{discussion}[thm]{Discussion}
-
-	\newcommand{\dfn}{\textbf} % Make defined words bold.
-	\newcommand{\mdfn}[1]{\dfn{\mathversion{bold}#1}} % Even make math symbols bold
-
-	% Various commands that are useful.  Please add your own.
-
-	\DeclareMathOperator{\Arg}{Arg}
-	\DeclareMathOperator{\re}{Re}
-	\DeclareMathOperator{\im}{Im}
-	\DeclareMathOperator{\Log}{Log}
-	\DeclareMathOperator{\Span}{Span}
-
-	\newcommand{\iso}{\cong}						% isometric/congruent
-	\newcommand{\ra}{\rightarrow}                   % right arrow
-	\newcommand{\Ra}{\Rightarrow}                   % right implies
-	\newcommand{\lra}{\longrightarrow}              % long right arrow
-	\newcommand{\la}{\leftarrow}                    % left arrow
-	\newcommand{\La}{\Leftarrow}                    % left implies
-	\newcommand{\lla}{\longleftarrow}               % long left arrow
-	\newcommand{\llra}[1]{\stackrel{#1}{\lra}}      % labeled long right arrow
-	\newcommand{\we}{\llra{\sim}}                   % weak equivalence
-	\newcommand{\cof}{\rightarrowtail}              % cofibration
-	\newcommand{\fib}{\twoheadrightarrow}           % fibration
-	\newcommand{\inc}{\hookrightarrow}              % inclusion
-	\newcommand{\dbra}{\rightrightarrows}           % double arrow for equalizer diagrams
-	\newcommand{\eqra}{\llra{\sim}}                 % equivalence/isomorphism
-
-	% \newcommand{\blank}{\underbar{\ \ }}          % An underscore, as in (__)xV
-	\newcommand{\blank}{-}                          % A hyphen, as in (-)xV
-	\newcommand{\Id}{Id}                            % The identity functor
-	\newcommand{\und}{\underline}
-	\newcommand{\norm}[1]{\mid \!\!#1 \!\!\mid}             %\norm{x} gives |x|
-
-	% These commands are for the period and comma in the lower right entry of
-	% a diagram.  They put the punctuation 2 pts to the right, but make
-	% TeX (and hence the diagram package) unaware of the extra width
-	% of that entry.
-	\newcommand{\period}    {{\makebox[0pt][l]{\hspace{2pt} .}}}
-	\newcommand{\comma}     {{\makebox[0pt][l]{\hspace{2pt} ,}}}
-	\newcommand{\semicolon} {{\makebox[0pt][l]{\hspace{2pt} ;}}}
-
-	\newcommand{\Cech}{\v{C}ech}
-	\newcommand{\scat}{\Delta}
-	\newcommand{\assign}{\ra}
-	\newcommand{\copr}{\,\amalg\,}
-	\newcommand{\ovcat}{\downarrow}
-	\newcommand{\pder}[2]{{\frac{\partial #1}{\partial #2}}}
-	\newcommand{\del}{\nabla}
-	\newcommand{\vectr}[1]{{\mbox{\boldmath $#1$}}}
-	\newcommand{\uvectr}[1]{\vectr{\hat #1}}
-	\newcommand{\ihat}{\uvectr \imath}
-	\newcommand{\jhat}{\uvectr \jmath}
-	\newcommand{\khat}{\uvectr k}
-	\newcommand{\rhat}{\uvectr r}
-	\newcommand{\thhat}{\uvectr \theta}
-	\newcommand{\zhat}{\uvectr z}
-	\newcommand{\rhohat}{\uvectr \rho}
-	\newcommand{\phihat}{\uvectr \phi}
-	\newcommand{\grad}{\vectr{\vec\nabla}}
-	% \newcommand{\R}{\mathbb{R}}
-	\newcommand{\vv}[1]{\vectr{v_{#1}}}
-	\newcommand{\crad}{0.1}
-	\newcommand{\lline}[1]{\overleftrightarrow{#1}}
-	\DeclareMathOperator{\area}{area}
-	\DeclareMathOperator{\vol}{vol}
-	\newcommand{\ray}[1]{\overset{\rightarrow}{#1}}
-	\newcommand{\sr}[2]{???}
-	\newcommand{\iihat}{i}
-	\newcommand{\jjhat}{j}
-	\newcommand{\kkhat}{k}
-
-		
 \begin{document}
-	\title{Homework 1  -- Math 397 \\ \today}
-	\author{Alex Thies \\ \href{mailto:athies@uoregon.edu}{\lowercase{athies$@$uoregon.edu}}}
 
-	\maketitle
+\bigskip
+
+\begin{center}
+Alex Thies \\
+Math 397 \\
+Homework \#1\\
+\end{center}
+
+\bigskip
+
+
+\begin{enumerate}[(1)]
+\item The \textit{quick brown} \textbf{fox} jumps over the \textit{lazy} \textbf{dog}.
+
+\item {\it Italicized text}
+
+\item {\bf Bold-face text}
+
+\item Some normal text, {\it some italicized text}, and some {\bf bold-face text}.
+
+\item In LaTeX, all math must be inside dollar signs.  Notice the difference between ``Let b be an element of $\R$'' and ``Let $b$ be an element of $\R$''.
+
+\item $\displaystyle\int_{0}^1 x^7\, dx= \frac{x^8}{8} \Bigr ]^1_0 = \frac{1}{8}-\frac{0}{8}=\frac{1}{8}$.  
+
+\item $f'(\mu)=\lim_{h \to 0} \Big [ \frac{f(\mu + h) - f(\mu)}{h} \Big ]$ and $\lim\limits_{x \to 5} \frac{\cos x}{x} =0$.
+
+
+\item Let $F : \R \to \R$ be given by $f(x) = x^{3} + 3x^{2} - 1$.
+
+\item $5<6$ and $6>2$
+
+\item For every $x\in (0,1)$ it is true that $x^2 < x$.
+
+\item $(f \circ g)(x) = (f(g(x))$ and $A \cap B \subseteq A$ and $X \neq Y$.
+\end{enumerate}
+
+\medskip
+
+\hrule
+
+\medskip
+
+\noindent
+Write your paragraph in below:
+
+
+% Put your paragraph after this line
+
+As with the previous reading, overall I enjoyed \textit{An Application of Geography to Mathematics}.
+I found that the authors did a good job introducing the historical context for an integral that seems arbitrarily difficulty to the elementary student of calculus; in so doing, they weaved together a discussion about solid geometry and integral calculus that is often absent from good introductory textbooks about either subject.
+Absent from this piece is a description of the options available to Mercator, and the real-world consequences of the eventual wide-spread use of his map, which I think would have made for a better overall piece of writing.\footnote{Fortunately, such a description can be found in Episode 16 of Season 2 of \textit{The West Wing}.}
 \end{document}

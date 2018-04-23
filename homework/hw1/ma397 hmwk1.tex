@@ -1,0 +1,92 @@
+\documentclass[12pt]{article}          % Nicer than default article style:  less
+                                % flashy headings, etc.
+
+\usepackage{amsmath,amsthm}     % Handy math stuff, theorem environments.
+\usepackage{amssymb}            % Fancy math symbols.
+\usepackage{euscript}           % Nice script font.
+\usepackage{graphicx,enumerate}
+
+
+% Don't force the bottoms of the pages to be at the same spot:
+\raggedbottom
+
+
+% Put sections, but not subsections, into the table of contents:
+\setcounter{tocdepth}{1}
+% Number sections, but not subsections.
+\setcounter{secnumdepth}{1}
+
+% Some theorem-like environments, all numbered together starting at 1
+% in each section.
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\lline}[1]{\overleftrightarrow{#1}}
+
+\begin{document}
+
+
+\bigskip
+
+\begin{center}
+Charlie Brown\\
+Math 397 \\
+Homework \#1\\
+\end{center}
+
+\bigskip
+
+
+\begin{enumerate}[(1)]
+\item The quick brown fox jumps over the lazy dog.
+
+\item {\it Italicized text}
+
+\item {\bf Bold-face text}
+
+\item Some normal text, {\it some italicized text}, and some {\bf
+bold-face text}.
+
+\item In LaTeX, all math must be inside dollar signs.  Notice the difference between
+``Let x be an element of $\R$'' and ``Let $x$ be an element of $\R$''.
+
+\item $\displaystyle\int_{0}^1 x^3\, dx= \frac{x^4}{4} \Bigr ]^1_0 =
+\frac{1}{4}-\frac{0}{4}=\frac{1}{4}$.  
+
+\item $f'(\theta)=\lim_{h\ra 0} \Big [
+\frac{f(\theta+h)-f(\theta)}{h} \Big ]$  and
+ $\lim\limits_{x\ra\infty} \frac{\sin x}{x} =0$.
+
+
+\item Let $T\colon \R^2 \ra \R^2$ be given by $T(x,y)=(y,-x)$.  
+
+\item $5<6$ and $6>2$
+
+\item For every $x\in (0,1)$ it is true that $x^2 < x$.
+
+\item $A\subseteq B \iff (\forall x)[x\in A\Rightarrow x\in B]$
+\end{enumerate}
+
+\medskip
+
+\hrule
+
+\medskip
+
+\noindent
+Write your paragraph in below:
+
+
+% Put your paragraph after this line
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
