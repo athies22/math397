@@ -414,6 +414,13 @@
 		[Hint: If you don’t have notes from class, this is explained in the links I put on the course website.]
 
 		\begin{proof}[Solution]
+		From the links on Canvas we have $D_{f}(\alpha) = \pi + 2 \alpha - 4\left( \arcsin \left( \frac{\sin \alpha}{n_{f,w}} \right) \right)$, further, by construction we know that $D_{f}(\alpha)$ and $E(\alpha)$ are supplementary angles, thus we compute:
+			\begin{align*}
+				E(\alpha) &= \pi - D_{f}(\alpha), \\
+				&= \pi - \left[ \pi + 2 \alpha - 4\left( \arcsin \left( \frac{\sin \alpha}{n_{f,w}} \right) \right) \right], \\
+				&= -2 \alpha +  4\left( \arcsin \left( \frac{\sin \alpha}{n_{f,w}} \right) \right), \\
+				&= 4\left( \arcsin \left( \frac{\sin \alpha}{n_{f,w}} \right) \right) - 2 \alpha.
+			\end{align*}
 		\end{proof}
 		% subsection part_a (end)
 		\pagebreak
@@ -425,7 +432,7 @@
 
 		\begin{proof}[Solution]
 		Observe Figure \ref{redGraph} for the graph of $E(\alpha)$ for red light, and Figure \ref{redMax} for the graph that illustrates the process by which we maximize $E(\alpha)$.
-		Utilizing the radians to degrees constant of conversion $180/\pi$, we estimate that the angle for the red part of the rainbow as $42.5^{\circ}$.
+		We estimate that the maximum for $E(\alpha)$ is $42.516^{\circ}$ which is achieved at $\alpha = 59.716^{\circ}$.
 			\begin{figure}[h]
 				\includegraphics[width=0.6\textwidth]{figs/c.png}
 				\caption{$y = E(\alpha)$ for $n = 1.33$}
@@ -478,22 +485,23 @@
 		Give the angles (in degrees) for the orange, green, and blue parts of the rainbow.
 
 		\begin{proof}[Solution]
-		Utilizing the same method of estimation as in part b, we have the following angles for parts of the rainbow:
+		Utilizing the same method of estimation as in part b, we have the following maximum angles for $E(\alpha)$ under different values for $n_{f}$; we present them as $(\alpha, E(\alpha))$ ordered pairs:
 			\begin{align*}
-				\text{Orange} &= , \\
-				\text{Green} &= , \\
-				\text{Blue} &= .
+				\text{Orange} &= (59.48^{\circ}, 42.078^{\circ}) \\
+				\text{Green} &= (59.432^{\circ}, 41.643^{\circ}) \\
+				\text{Blue} &= (59.153^{\circ}, 41.070^{\circ}).
 			\end{align*}
-			
+		The Sage-worksheet containing the dirty-work that lead to the above results is attached as Enclosure (1).
 		\end{proof}
 		% subsection part_d (end)
 
 		\subsection*{Part (e)}
-		For red light, there are two incoming angles α1 and α2 for which the reflected ray has $E = 23^{\circ}$. 
+		For red light, there are two incoming angles $\alpha_{1}$ and $\alpha_{2}$ for which the reflected ray has $E = 23^{\circ}$. 
 		Find $\alpha_{1}$ and $\alpha_{2}$, giving them in degrees. 
 		(You will probably need to use Sage for this part).
 
 		\begin{proof}[Solution]
+		As in the previous part, we do the dirty work in Sage (with the worksheet attached) and find that the two incoming angles for which $E(\alpha) = 23^{\circ}$ are $$\alpha_{1} = 23.742^{\circ} \ \text{and} \ \alpha_{2} = 85.627.$$
 		\end{proof}
 		% subsection part_e (end)
 	% section problem_4 (end)
