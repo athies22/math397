@@ -11,7 +11,7 @@
 	\usepackage{hyperref}
 	\usepackage{verbatim}
 	\usepackage{stmaryrd}
-	\usepackage[margin=1.25in]{geometry}
+	\usepackage[margin=1in]{geometry}
 
 	\raggedbottom
 
@@ -431,7 +431,7 @@
 		Convert your answer to degrees: this is the angle for the red part of the rainbow.
 
 		\begin{proof}[Solution]
-		Observe Figure \ref{redGraph} for the graph of $E(\alpha)$ for red light, and Figure \ref{redMax} for the graph that illustrates the process by which we maximize $E(\alpha)$.
+		Observe Figure \ref{redGraph} for the graph of $E(\alpha)$ for red light, and Figure \ref{redMax} for the graph that illustrates the process by which we maximize $E(\alpha)$; Figures \ref{sage3} \& \ref{sage4} contain the Sage code for these results.
 		We estimate that the maximum for $E(\alpha)$ is $42.516^{\circ}$ which is achieved at $\alpha = 59.716^{\circ}$.
 			\begin{figure}[h]
 				\includegraphics[width=0.6\textwidth]{figs/c.png}
@@ -466,6 +466,7 @@
 
 		\begin{proof}[Solution]
 		Observe Figure \ref{rainbowGraph} for the graph of $E(\alpha)$ with the various indices of refraction found in Figure \ref{refractionIndices}; for an illustration of how the various maxima of $E(\alpha)$ relate, we have Figure \ref{raibowZoom}.
+		The Sage code for these results is in Figure \ref{sage5}.
 
 			\begin{figure}[h]
 				\includegraphics[width=0.6\textwidth]{figs/e.png}
@@ -491,7 +492,7 @@
 				\text{Green} &= (59.432^{\circ}, 41.643^{\circ}) \\
 				\text{Blue} &= (59.153^{\circ}, 41.070^{\circ}).
 			\end{align*}
-		The Sage-worksheet containing the dirty-work that lead to the above results is attached as Enclosure (1).
+		The Sage code for these results are Figures \ref{sage6}, \ref{sage7}, and \ref{sage8}.
 		\end{proof}
 		% subsection part_d (end)
 
@@ -501,8 +502,65 @@
 		(You will probably need to use Sage for this part).
 
 		\begin{proof}[Solution]
-		As in the previous part, we do the dirty work in Sage (with the worksheet attached) and find that the two incoming angles for which $E(\alpha) = 23^{\circ}$ are $$\alpha_{1} = 23.742^{\circ} \ \text{and} \ \alpha_{2} = 85.627.$$
+		As in the previous part, we do the dirty work in Sage -- Figure \ref{sage9}, and find that the two incoming angles for which $E(\alpha) = 23^{\circ}$ are $$\alpha_{1} = 23.742^{\circ} \ \text{and} \ \alpha_{2} = 85.627.$$
 		\end{proof}
 		% subsection part_e (end)
 	% section problem_4 (end)
+	\pagebreak
+
+	\section*{Sage Code}
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{sage/images/1.png}
+			\caption{Sage code for Problem 3.b; Output: Figure 1}
+			\label{sage1}
+		\end{figure}
+
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{sage/images/2.png}
+			\caption{Sage code for Problem 3.c; Output: Figure 2}
+			\label{sage2}
+		\end{figure}
+
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{sage/images/3.png}
+			\caption{Sage code for Problem 4.b; Output: Figure 3}
+			\label{sage3}
+		\end{figure}
+
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{sage/images/4.png}
+			\caption{Sage code for estimating $\max E_{R}(\alpha)$; Output: Figure 4}
+			\label{sage4}
+		\end{figure}
+
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{sage/images/5.png}
+			\caption{Sage code for Problem 4.c; Output: Figures 6 \& 7}
+			\label{sage5}
+		\end{figure}
+
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{sage/images/6.png}
+			\caption{Sage code for Problem 4.d, estimating $\max E_{O}(\alpha)$; Output: Not included}
+			\label{sage6}
+		\end{figure}
+
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{sage/images/7.png}
+			\caption{Sage code for Problem 4.d, estimating $\max E_{G}(\alpha)$; Output: Not included}
+			\label{sage7}
+		\end{figure}
+
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{sage/images/8.png}
+			\caption{Sage code for Problem 4.d, estimating $\max E_{B}(\alpha)$; Output: Not included}
+			\label{sage8}
+		\end{figure}
+
+		\begin{figure}[h]
+			\includegraphics[width=\textwidth]{sage/images/9.png}
+			\caption{Sage code for Problem 4.e; Output: Not included}
+			\label{sage9}
+		\end{figure}
+	% section sage_code (end)
 \end{document}
