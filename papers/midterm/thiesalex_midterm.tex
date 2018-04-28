@@ -1,0 +1,388 @@
+%!TEX output_directory = temp
+\documentclass[letterpaper, 12pt]{amsart}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%% boilerplate packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\usepackage{amsmath,amssymb,amsthm}
+	\usepackage[mathscr]{euscript}
+	\usepackage{enumerate}
+	\usepackage{graphicx}
+	\usepackage{mathrsfs}
+	\usepackage{color}
+	\usepackage{hyperref}
+	\usepackage{verbatim}
+	\usepackage{stmaryrd}
+	\usepackage[margin=2in]{geometry}
+
+	\raggedbottom
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%% rename the abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% \renewcommand{\abstractname}{Introduction}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% sets %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%% sets 
+		\DeclareMathOperator{\N}{\mathbb{N}}
+		\DeclareMathOperator{\Z}{\mathbb{Z}}
+		\DeclareMathOperator{\Zp}{\mathbb{Z}^{+}}
+		\DeclareMathOperator{\Q}{\mathbb{Q}}
+		\DeclareMathOperator{\Qp}{\mathbb{Q}^{+}}
+		\DeclareMathOperator{\Qc}{\mathbb{Q}^{c}}
+		\DeclareMathOperator{\R}{\mathbb{R}}
+		\DeclareMathOperator{\F}{\mathbb{F}}
+		\DeclareMathOperator{\Rp}{\mathbb{R}^{+}}
+		\DeclareMathOperator{\C}{\mathbb{C}}
+		\DeclareMathOperator{\Cnon}{\mathbb{C}^{\times}}
+		%% powerset of a set
+		\DeclareMathOperator{\pset}{\mathcal{P}}
+		%% set of continuous functions in a certain variable
+		\DeclareMathOperator{\cont}{\mathscr{C}}
+		%% set of functions in a certain variable
+		\DeclareMathOperator{\func}{\mathscr{F}}
+		%% area function
+		\DeclareMathOperator{\A}{\mathcal{A}}
+		
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% linear algebra %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%% linear span
+		\DeclareMathOperator{\Ell}{\mathscr{L}}
+		%% bold vectors with arrows, and bold matrices
+		\newcommand{\bmat}[1]{{\mathbf{#1}}}
+		\newcommand{\bvec}[1]{{\vec{\mathbf{#1}}}}
+		%% independent vectors/matrices
+		\DeclareMathOperator{\ind}{\perp\!\!\!\perp}
+		%% order
+		\DeclareMathOperator{\ord}{\text{ord}}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%% probability & statistics %%%%%%%%%%%%%%%%%%%%%%%%%
+		%% probability, expectation, variance, etc.
+		\renewcommand{\Pr}{\mathbb{P}}
+		\DeclareMathOperator{\E}{\mathbb{E}}
+		\DeclareMathOperator{\var}{\rm Var}
+		\DeclareMathOperator{\sd}{\rm SD}
+		\DeclareMathOperator{\cov}{\rm Cov}
+		\DeclareMathOperator{\SE}{\rm SE}
+		\DeclareMathOperator{\ssreg}{{\rm SS}_{{\rm Reg}}}
+		\DeclareMathOperator{\ssr}{{\rm SS}_{{\rm Res}}}
+		\DeclareMathOperator{\sst}{{\rm SS}_{{\rm Tot}}}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% congruences %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% bracket notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% I first used this for principal ideals, that is why the abbreviation is pid
+		\newcommand{\pid}[1]{\langle #1 \rangle}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% fatdot notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\makeatletter
+			\newcommand*\fatdot{\mathpalette\fatdot@{.5}}
+			\newcommand*\fatdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+		\makeatother
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% use pretty letters %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\DeclareMathOperator{\ep}{\varepsilon}
+		\DeclareMathOperator{\ph}{\varphi}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%% stolen from Jeske/Dugger %%%%%%%%%%%%%%%%%%%%%%%%%
+	% Some theorem-like environments, all numbered together starting at 1
+	% in each section.
+
+	% The default \theoremstyle is bold headings and italic body text.
+	\newtheorem{thm}{Theorem}[section]
+	\newtheorem{axe}[thm]{Axiom}
+	\newtheorem{defn}[thm]{Definition}
+	\newtheorem{prop}[thm]{Proposition}
+	\newtheorem{claim}[thm]{Claim}
+	\newtheorem{cor}[thm]{Corollary}
+	\newtheorem{lemma}[thm]{Lemma}
+
+	\theoremstyle{definition}  % Bold headings and Roman body text.
+	\newtheorem{example}[thm]{Example}
+	\newtheorem{examples}[thm]{Examples}
+	\newtheorem{exercise}[thm]{Exercise}
+	\newtheorem{note}[thm]{Note}
+	\newtheorem{remark}[thm]{Remark}
+	\newtheorem{remarks}[thm]{Remarks}
+	\newtheorem{discussion}[thm]{Discussion}
+
+	\newcommand{\dfn}{\textbf} % Make defined words bold.
+	\newcommand{\mdfn}[1]{\dfn{\mathversion{bold}#1}} % Even make math symbols bold
+
+	% Various commands that are useful.  Please add your own.
+
+	\DeclareMathOperator{\Arg}{Arg}
+	\DeclareMathOperator{\re}{Re}
+	\DeclareMathOperator{\im}{Im}
+	\DeclareMathOperator{\Log}{Log}
+	\DeclareMathOperator{\Span}{Span}
+
+	\newcommand{\iso}{\cong}						% isometric/congruent
+	\newcommand{\ra}{\rightarrow}                   % right arrow
+	\newcommand{\Ra}{\Rightarrow}                   % right implies
+	\newcommand{\lra}{\longrightarrow}              % long right arrow
+	\newcommand{\la}{\leftarrow}                    % left arrow
+	\newcommand{\La}{\Leftarrow}                    % left implies
+	\newcommand{\lla}{\longleftarrow}               % long left arrow
+	\newcommand{\llra}[1]{\stackrel{#1}{\lra}}      % labeled long right arrow
+	\newcommand{\we}{\llra{\sim}}                   % weak equivalence
+	\newcommand{\cof}{\rightarrowtail}              % cofibration
+	\newcommand{\fib}{\twoheadrightarrow}           % fibration
+	\newcommand{\inc}{\hookrightarrow}              % inclusion
+	\newcommand{\dbra}{\rightrightarrows}           % double arrow for equalizer diagrams
+	\newcommand{\eqra}{\llra{\sim}}                 % equivalence/isomorphism
+
+	% \newcommand{\blank}{\underbar{\ \ }}          % An underscore, as in (__)xV
+	\newcommand{\blank}{-}                          % A hyphen, as in (-)xV
+	\newcommand{\Id}{Id}                            % The identity functor
+	\newcommand{\und}{\underline}
+	\newcommand{\norm}[1]{\mid \!\!#1 \!\!\mid}             %\norm{x} gives |x|
+
+	% These commands are for the period and comma in the lower right entry of
+	% a diagram.  They put the punctuation 2 pts to the right, but make
+	% TeX (and hence the diagram package) unaware of the extra width
+	% of that entry.
+	\newcommand{\period}    {{\makebox[0pt][l]{\hspace{2pt} .}}}
+	\newcommand{\comma}     {{\makebox[0pt][l]{\hspace{2pt} ,}}}
+	\newcommand{\semicolon} {{\makebox[0pt][l]{\hspace{2pt} ;}}}
+
+	\newcommand{\Cech}{\v{C}ech}
+	\newcommand{\scat}{\Delta}
+	\newcommand{\assign}{\ra}
+	\newcommand{\copr}{\,\amalg\,}
+	\newcommand{\ovcat}{\downarrow}
+	\newcommand{\pder}[2]{{\frac{\partial #1}{\partial #2}}}
+	\newcommand{\del}{\nabla}
+	\newcommand{\vectr}[1]{{\mbox{\boldmath $#1$}}}
+	\newcommand{\uvectr}[1]{\vectr{\hat #1}}
+	\newcommand{\ihat}{\uvectr \imath}
+	\newcommand{\jhat}{\uvectr \jmath}
+	\newcommand{\khat}{\uvectr k}
+	\newcommand{\rhat}{\uvectr r}
+	\newcommand{\thhat}{\uvectr \theta}
+	\newcommand{\zhat}{\uvectr z}
+	\newcommand{\rhohat}{\uvectr \rho}
+	\newcommand{\phihat}{\uvectr \phi}
+	\newcommand{\grad}{\vectr{\vec\nabla}}
+	% \newcommand{\R}{\mathbb{R}}
+	\newcommand{\vv}[1]{\vectr{v_{#1}}}
+	\newcommand{\crad}{0.1}
+	\newcommand{\lline}[1]{\overleftrightarrow{#1}}
+	\DeclareMathOperator{\area}{area}
+	\DeclareMathOperator{\vol}{vol}
+	\newcommand{\ray}[1]{\overset{\rightarrow}{#1}}
+	\newcommand{\sr}[2]{???}
+	\newcommand{\iihat}{i}
+	\newcommand{\jjhat}{j}
+	\newcommand{\kkhat}{k}
+
+	\renewcommand{\abstractname}{Comment}		
+\begin{document}
+	\title{Midterm Paper  -- Math 397 \\ \today}
+	\author{Alex Thies \\ \href{mailto:athies@uoregon.edu}{\lowercase{athies$@$uoregon.edu}}}
+
+	\pagenumbering{gobble}
+	\maketitle
+	\newpage
+
+	\pagenumbering{roman}
+	\tableofcontents
+	\newpage
+
+	\pagenumbering{arabic}
+	\section{Introduction}
+	\label{sec:introduction}
+		
+	% section introduction (end)
+	\newpage
+
+	\section{The Method of Exhaustion}
+	\label{sec:the_method_of_exhaustion}
+		\subsection{Axioms and Definitions}
+		\label{sub:axioms_and_definitions}
+		Archimedes devised his Method of Exhaustion in the era of Euclidean geometry, restricted by the axiomatic style of \textit{The Elements}.\footnote{The interested reader can find the definitions, postulates (a.k.a., axioms), and common notions from \textit{The Elements} in Appendix \ref{sec:euclid_s_axioms_&_definitions}.}
+		In addition to tools from Euclid, Archimedes relied on the following two axioms related to the area of curvilinear figures in the plane.\footnote{It should be clear that these are modern re-statements of concepts that the Greeks would have described in very different language.}
+		\begin{axe}[Relative areas of figures]
+		If a figure $S$ is contained in a figure $T$, then the area of figure $S$ is less than that of $T$.
+		\end{axe}
+
+		\begin{axe}[Relative areas of overlapping figures]
+		If $R$ is the union of non-overlapping figures $S$ and $T$, then the area of $R$ is the sum of the areas of $S$ and $T$.
+		\end{axe}
+
+		Additionally, Archimedes' Method of Exhaustion required a principle that we now attribute to the Greek mathematician Eudoxus:\footnote{Euclid includes this as the first proposition from the tenth book of \textit{The Elements}. Book X is by far the longest of the books from \textit{The Elements}, it is devoted to the study of irrational numbers.}
+		A modern statement of Eudoxus' Principle is:
+		\begin{axe}[Eudoxus' Principle]
+		\label{axe:eudoxus}
+		Given two magnitudes $a$ and $b$, there exists an integer $n$ such that $na>b$.
+		\end{axe}
+
+		Finally, we have to define some important things, such as circles, regular polygons, an area function, etc.
+		\begin{defn}
+		\label{defn:circle}
+		We define a \textbf{circle} to be the set $C = \{ (x,y) : (x - h)^{2} + (y - k)^{2} = r^{2} \}$ of all points that are distance $r$ -- the \textbf{radius} of a circle -- from a point $P = (h,k)$ -- the \textbf{center} of a circle.
+		\end{defn}
+
+		\begin{defn}
+		\label{defn:reg_polygon}
+		Let $P_{1}P_{2} \cdots P_{n}$ be an $n$-sided polygonal figure in the plane.
+		We say that such a polygonal figure is a \textbf{regular polygon} if and only if it is both equilateral and equiangular; we may also call this a \textbf{regular n-gon}.
+		\end{defn}
+
+		\begin{defn}
+		\label{defn:sim_polygons}
+		We say that two figures $S$ and $T$ in the plane are \textbf{similar} if and only if the ratio of sides of $S$ to their corresponding sides in $T$ are proportional.
+		\end{defn}
+
+		\begin{defn}
+		\label{defn:area_function}
+		Let $\, \Omega_{2}$ be the set of all two-dimensional shapes in the plane.
+		We define $\A : \Omega_{2} \to \R^{+}$, a function that takes a shape from the plane and outputs the area of the shape.
+		The argument of $\A$ will look like $P_{0}P_{1} \cdots P_{n}$, where $P_{i}$'s are points on edge of the shape, typically the vertices of a polygonal shape, but they may just be points on the edge.
+		We call this function the \textbf{area function}, it is defined piece-wise, but given the myriad of irregular shapes in a two-dimensional plane, it is far too cumbersome to explicitly define each mapping that $\A$ can take.
+		One mapping that the reader will be familiar with is for a square $ABCD$ with side length $AB = s$, we have $\A(ABCD) = s^{2}$, another is for $\triangle ABC$ with base $b$ and height $h$ we have $\A(\triangle ABC) = (1/2)bh$.
+		\end{defn}
+		% subsection axioms_and_definitions (end)
+
+		\subsection{The Method}
+		\label{sub:the_method}
+		% subsection the_method (end)
+	% section the_method_of_exhaustion (end)
+	\newpage
+
+	\section{Applications}
+	\label{sec:applications}
+		\subsection{Approximation of $\pi$}
+		\label{sub:approximation_of_pi}
+		IDEA
+
+		This brings us to our first lemma, which allows us to inscribe into a circle a regular $n$-gons with a number of sides $n$ that would be such that the difference of the areas of the circle and the inscribed regular $n$-gon is as small as we like.
+		In other words, we can approximate the area of a circle by computing the area of an inscribed regular $n$-gon, and we can make the error between the area of the $n$-gon and the circle to be as small as we need.
+
+		\begin{lemma}
+		Given a circle $C$ and a small number $\ep \in \R$ with $\ep > 0$, there exists a regular polygon $P$ inscribed in $C$ such that $\A(C) - \A(P) < \ep$.
+		\end{lemma}
+		\begin{proof}
+		Let $C$ be a circle in the plane with center $O$ and radius $r$; let $P_{0} = ABCD$ be a square which is inscribed in $C$.
+		Let $M_{0} = \A(C) - \A(P_{0})$.
+		Next, we double the number of sides of $P_{0}$, and create the regular octogon $P_{1}$.
+		Continue this process, generating a sequence of regular polygons $P_{0}, P_{1}, \dots, P_{n}$ each with $2^{n+2}$-many sides.
+		Let $M_{n} = \A(C) - \A(P_{n})$.
+		We want to show that $M_{n} - M_{n+1} > \tfrac{1}{2}M_{n}$, this is because 
+			\begin{align*}
+			M_{n} - M_{n+1} &> \tfrac{1}{2}M_{n}, \\
+			M_{n} - \tfrac{1}{2}M_{n} &> M_{n+1}, \\
+			\tfrac{1}{2}M_{n} &> M_{n+1}.
+			\end{align*}
+		Notice that $\tfrac{1}{2}M_{n} > M_{n+1}$ is precisely the condition that we need to create in order to make use of the Method of Exhaustion.
+
+		Consider $n = 0$:
+			\begin{align*}
+			M_{0} - M_{1} &= [\A(C) - \A(P_{0})] - [\A(C) - \A(P_{1})], \\
+			&= \A(P_{1}) - \A(P_{0}), \\
+			&= 4 \A(\triangle QQQ), \\
+			&= 2 \A(UWW'U'), \\
+			&> 2 \A(QQQ), \\
+			&> \tfrac{1}{2} \cdot 4 \cdot \A(QQQ), \\
+			&> \tfrac{1}{2} \left[ \A(C) - \A(P_{0}) \right], \\
+			&> \tfrac{1}{2} M_{0}.
+			\end{align*}
+		Hence, the claim is true for $n=0$, and it should be clear that if we continue in this manner, changing what needs to be changed along the way, we will arive at the result $M_{n} - M_{n+1} > \tfrac{1}{2}M_{n}$.
+		Thus, by \ref{axe:archimedean} there exists some $N \in \N$ such that $M_{N} < \ep$, as we aimed to show.
+		\end{proof}
+
+		\begin{lemma}
+		The ratio of areas of two similar regular polygons is proportional to the ratio of the squares of their corresponding sides.
+		\end{lemma}
+		\begin{proof}
+		\end{proof}
+
+		\begin{thm}
+		If $C_{1}$ and $C_{2}$ are circles with area $\alpha_{1}$ and $\alpha_{2}$, respectively, then $$\frac{\A(C_{1})}{\A(C_{2})} = \frac{\alpha_{1}^{2}}{\alpha_{2}^{2}},$$ or, equivalently: $$\frac{\A(C_{1})}{\alpha_{1}^{2}} = \frac{\A(C_{2})}{\alpha_{2}^{2}}.$$
+		\end{thm}
+		\begin{proof}
+		\end{proof}
+		% subsection approximation_of_pi (end)
+
+		% \subsection{Quadrature of the Parabola}
+		% \label{sub:quadrature_of_the_parabola}
+		% % subsection quadrature_of_the_parabola (end)
+
+		% \subsection{Quadrature of the Lune}
+		% \label{sub:quadrature_of_the_lune}
+		% % subsection quadrature_of_the_lune (end)
+	% section applications (end)
+	\newpage
+
+	\section{Descendants}
+	\label{sec:descendants}
+		\subsection{The Archimedean Property}
+		\label{sub:the_archimedean_property}
+		% subsection the_archimedean_property (end)
+
+		\subsection{Methods of Numerical Integration}
+		\label{sub:methods_of_numerical_integration}
+		% subsection methods_of_numerical_integration (end)
+	% section descendants (end)
+	\newpage
+
+	\appendix
+
+	\section{References}
+	\label{sec:references}
+	\begin{enumerate}
+		\item Beckmann, Petr; \textit{A History of $\pi$}
+		\item Dunham, William; \textit{Journey Through Genius}
+		\item Edwards Jr., C.H.; \textit{The Historical Development of the Calculus}
+		\item Euclid; \textit{The Elements}
+	\end{enumerate}
+	% section references (end)
+
+	\section{Euclid's Axioms \& Definitions}
+	\label{sec:euclid_s_axioms_&_definitions}
+		\begin{axe}[Euclid's 1st Postulate]
+		To draw a straight line from any point to any point.
+		\end{axe}
+
+		\begin{axe}[Euclid's 2nd Postulate]
+		To produce a finite straight line continuously in a straight line.
+		\end{axe}
+
+		\begin{axe}[Euclid's 3rd Postulate]
+		To describe a circle with any center and distance.
+		\end{axe}
+
+		\begin{axe}[Euclid's 4th Postulate]
+		That all right angles are equal to one another.
+		\end{axe}
+
+		\begin{axe}[Euclid's 5th Postulate]
+		That, if a straight line falling on two straight lines make the interior angles on the same side less than two right angles, the two straight lines, if produced infinitely, meet on that side on which are the angles less than the two right angles.
+		\end{axe}
+
+		\begin{axe}[Euclid's 1st Common Notion]
+		Things which are equal to the same thing are also equal to one another.
+		\end{axe}
+
+		\begin{axe}[Euclid's 2nd Common Notion]
+		If equals be added to equals, the whole are equal.
+		\end{axe}
+
+		\begin{axe}[Euclid's 3rd Common Notion]
+		If equals be subtracted from equals, the remainders are equal.
+		\end{axe}
+
+		\begin{axe}[Euclid's 4th Common Notion]
+		Things which coincide with one another are equal to one another.
+		\end{axe}
+
+		\begin{axe}[Euclid's 5th Common Notion]
+		The whole is greater than the part.
+		\end{axe}
+	% section euclid_s_axioms_&_definitions (end)
+\end{document}
