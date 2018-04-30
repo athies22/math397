@@ -181,9 +181,12 @@
 	\newcommand{\jjhat}{j}
 	\newcommand{\kkhat}{k}
 
-	\renewcommand{\abstractname}{Comment}		
+	\renewcommand{\abstractname}{Comment}	
+
+	\usepackage{pgf,tikz}
+	\usetikzlibrary{arrows}	
 \begin{document}
-	\title{Midterm Paper  -- Math 397 \\ \today}
+	\title{On the Cusp of Calculus \\ \today}
 	\author{Alex Thies \\ \href{mailto:athies@uoregon.edu}{\lowercase{athies$@$uoregon.edu}}}
 
 	\pagenumbering{gobble}
@@ -191,27 +194,85 @@
 	\newpage
 
 	\pagenumbering{roman}
+	\setcounter{tocdepth}{1}
 	\tableofcontents
 	\newpage
 
 	\pagenumbering{arabic}
 	\section{Introduction}
 	\label{sec:introduction}
-		
+	Greek geometry, axiomatic constructions, aristotilean dogma about infinity and zero, how the method of exhaustion was on the precipice of the limit.
+
+	Remark on applications of the method of exhaustion, as well as its descendants.
+
+	% The Ancient Greeks have a high station in the Pantheon of Mathematics not necessarily because they were the first civilization to make certain mathematical discoveries, but rather because they were the first to base their mathematics on an rigorous, axiomatic system; additionally, they were the first to write down their mathematics in a way that survived history.
+	% The mathematical ability of the Ancient Egyptians was certainly quite strong, given their ability to build such wonders as the Pyramids, as well as maintain scrupulous administrative records.
+	% Similarly, modern archaeology has shown us that the Babylonians and Summerians were quite adept at mathematics themselves.
+	% Nonetheless, it was the mathematics of Ancient Greece that ended up having a lasting impact in western academia.
+
+	% The mathematics of Ancient Greece, highlighted by the works of Euclid, Archimedes, Hypatia, Eudoxus, and many others, was grounded in the field of geometry.
+	% According to the Ancient Greeks, numbers existed if and only if they could be constructed by a compass and straight-edge, both of which must be unmarked.
+	% One could divide by two or three only because it could be proved that you could cut up a given line segment into exactly halves or thirds with your Euclidean tools.
+	% Proofs, according to the Ancient Greeks, must be built from a small set of axioms (or postulates), along with definitions and some common sense.
+	% Given this obsession with geometry, many of the early questions of western mathematics are related to the areas of shapes and volumes of solids.
+
+	% With \textit{The Elements} as your tool box, a person can devise ways to compute the area of just about any \textbf{rectilineal figure}, however that still leaves un-measured all of the \textbf{curvilinear figures}.\footnote{Some people call rectilineal figures, polygonal figures.}
+	% The basic idea for computing the area of rectilineal figures is to cut them up into trilateral or quadrilateral figures, and compute the sum of the areas of each of those new figures.
+	% That strategy doesn't really work with curvilinear figures, given their varying curviture.
+	% Whereas rectilineal figures have a `prime' element, the triangle; there is no analogous `prime' element from the curvilinear figures.
+	% Nonetheless, it is possible to classify some of the curvilinear figures and determine methods to compute the area of the `easy' ones.
+	% Enter Archimedes of Syracuse, the greatest mathematician of the ancient world, and his quest to determine the area of a circle.
+	% The circle can be seen as one of the most pleasant curvilinear figures that exists.
+	% Its symmetric, its an extremely useful tool in Euclidean constructions, it appears in nature all the time, etc.
+
 	% section introduction (end)
-	\newpage
 
 	\section{The Method of Exhaustion}
 	\label{sec:the_method_of_exhaustion}
 		\subsection{Axioms and Definitions}
 		\label{sub:axioms_and_definitions}
-		Archimedes devised his Method of Exhaustion in the era of Euclidean geometry, restricted by the axiomatic style of \textit{The Elements}.\footnote{The interested reader can find the definitions, postulates (a.k.a., axioms), and common notions from \textit{The Elements} in Appendix \ref{sec:euclid_s_axioms_&_definitions}.}
-		In addition to tools from Euclid, Archimedes relied on the following two axioms related to the area of curvilinear figures in the plane.\footnote{It should be clear that these are modern re-statements of concepts that the Greeks would have described in very different language.}
+		% Archimedes devised his Method of Exhaustion in the era of Euclidean geometry, restricted by the axiomatic style of \textit{The Elements}.\footnote{The interested reader can find the definitions, postulates (a.k.a., axioms), and common notions from \textit{The Elements} in Appendix \ref{sec:euclid_s_axioms_&_definitions}.}
+		% In addition to tools from Euclid, Archimedes relied on the following two axioms related to the area of curvilinear figures in the plane.\footnote{It should be clear that these are modern re-statements of concepts that the Greeks would have described in very different language.}
+
+		We begin with some necessary definitions and axioms:
+
+		\begin{defn}
+		\label{defn:fig}
+		For the sake of mathematical rigor, we define a two-dimensional shape in the plane as a \textbf{figure}; the sides of the figure, or the extremities, are called the \textbf{boundary} of the figure; if the boundary of a figure is composed of only straight lines, then we say that figure is \textbf{rectilinear}, or \textbf{polygonal}; if the boundary of a figure contains at least one segment that is not a straight line, then we say that figure is \textbf{curvilinear}.
+		\end{defn}
+
+		\begin{defn}
+		\label{defn:circle}
+		We define a \textbf{circle} to be the set $C = \{ (x,y) : (x - h)^{2} + (y - k)^{2} = r^{2} \}$ of all points that are distance $r$ from a point $P = (h,k)$; we say that $r$ is the \textbf{radius}, and that $P$ is the \textbf{center}.
+		\end{defn}
+
+		\begin{defn}
+		\label{defn:polygon}
+		Let $P_{1}P_{2} \cdots P_{n}$ be a set of points in the plane that can be connected by non-intersecting straight-line segments, these non-intersecting straight-line segments connected by \\
+		$P_{1}P_{2} \cdots P_{n}$ form the boundary of a figure called $P_{1}P_{2} \cdots P_{n}$.
+		We say that $P_{1}P_{2} \cdots P_{n}$ is a \textbf{polygon}, that $P_{1}P_{2} \cdots P_{n}$ are its \textbf{vertices}, that $\overline{P_{i}P_{i+1}}$ are its \textbf{sides}, and that $P_{i}P_{i+1} = a_{i}$ are the \textbf{lengths}, or \textbf{magnitudes} of its sides.
+
+		If a polygon $P$ is such that its sides are all of the same length, and its interior angles are all of the same measure, then and only then is $P$ called a \textbf{regular polygon}; if $P$ has $n$ sides then it can be called a \textbf{regular n-gon}.
+		\end{defn}
+
+		\begin{defn}
+		\label{defn:sim_polygons}
+		We say that two polygonal figures $P$ and $Q$ in the plane are \textbf{similar} if and only if the ratio of sides of $P$ to their corresponding sides in $Q$ are proportional.
+		\end{defn}
+
+		\begin{defn}
+		\label{defn:area_function}
+		Let $\, \Omega_{2}$ be the set of all two-dimensional shapes in the plane, and let $P \in \Omega_{2}$.
+		We define $\A : \Omega_{2} \to \R^{+}$, a function that takes a shape from the plane and outputs the area of the shape, i.e., $\A(P) \mapsto x$ where $x \in \R$ is the area of $P$.
+		We call this function the \textbf{area function}, it is defined piece-wise, but given the myriad of irregular shapes in a two-dimensional plane, it is far too cumbersome to explicitly define each mapping that $\A$ can take.
+		One mapping that the reader will be familiar with is for a square $ABCD$ with side length $AB = s$, we have $\A(ABCD) = s^{2}$, another is for $\triangle ABC$ with base $b$ and height $h$ we have $\A(\triangle ABC) = (1/2)bh$.
+		\end{defn}
+
 		\begin{axe}[Relative areas of figures]
 		If a figure $S$ is contained in a figure $T$, then the area of figure $S$ is less than that of $T$.
 		\end{axe}
 
-		\begin{axe}[Relative areas of overlapping figures]
+		\begin{axe}[Sums of areas of overlapping figures]
 		If $R$ is the union of non-overlapping figures $S$ and $T$, then the area of $R$ is the sum of the areas of $S$ and $T$.
 		\end{axe}
 
@@ -219,34 +280,8 @@
 		A modern statement of Eudoxus' Principle is:
 		\begin{axe}[Eudoxus' Principle]
 		\label{axe:eudoxus}
-		Given two magnitudes $a$ and $b$, there exists an integer $n$ such that $na>b$.
-		\end{axe}
-
-		Finally, we have to define some important things, such as circles, regular polygons, an area function, etc.
-		\begin{defn}
-		\label{defn:circle}
-		We define a \textbf{circle} to be the set $C = \{ (x,y) : (x - h)^{2} + (y - k)^{2} = r^{2} \}$ of all points that are distance $r$ -- the \textbf{radius} of a circle -- from a point $P = (h,k)$ -- the \textbf{center} of a circle.
-		\end{defn}
-
-		\begin{defn}
-		\label{defn:reg_polygon}
-		Let $P_{1}P_{2} \cdots P_{n}$ be an $n$-sided polygonal figure in the plane.
-		We say that such a polygonal figure is a \textbf{regular polygon} if and only if it is both equilateral and equiangular; we may also call this a \textbf{regular n-gon}.
-		\end{defn}
-
-		\begin{defn}
-		\label{defn:sim_polygons}
-		We say that two figures $S$ and $T$ in the plane are \textbf{similar} if and only if the ratio of sides of $S$ to their corresponding sides in $T$ are proportional.
-		\end{defn}
-
-		\begin{defn}
-		\label{defn:area_function}
-		Let $\, \Omega_{2}$ be the set of all two-dimensional shapes in the plane.
-		We define $\A : \Omega_{2} \to \R^{+}$, a function that takes a shape from the plane and outputs the area of the shape.
-		The argument of $\A$ will look like $P_{0}P_{1} \cdots P_{n}$, where $P_{i}$'s are points on edge of the shape, typically the vertices of a polygonal shape, but they may just be points on the edge.
-		We call this function the \textbf{area function}, it is defined piece-wise, but given the myriad of irregular shapes in a two-dimensional plane, it is far too cumbersome to explicitly define each mapping that $\A$ can take.
-		One mapping that the reader will be familiar with is for a square $ABCD$ with side length $AB = s$, we have $\A(ABCD) = s^{2}$, another is for $\triangle ABC$ with base $b$ and height $h$ we have $\A(\triangle ABC) = (1/2)bh$.
-		\end{defn}
+		Given two magnitudes $a$ and $b$, there exists $n \in \N$ such that $na>b$.
+		\end{axe}		
 		% subsection axioms_and_definitions (end)
 
 		\subsection{The Method}
@@ -259,10 +294,130 @@
 	\label{sec:applications}
 		\subsection{Approximation of $\pi$}
 		\label{sub:approximation_of_pi}
-		IDEA
+		Ancient maths and circles.
+
+		\vspace{5mm}
+
+		Perimeter and area of circles.
+
+		\vspace{5mm}
+
+		The existence of a constant of proportionality ...
+
+		\vspace{5mm}
+
+		\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+		\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+		\definecolor{qqffff}{rgb}{0.,1.,1.}
+		\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+		\begin{figure}[h]
+			\resizebox {\textwidth} {!} {
+			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+			\clip(-1.6367339134538867,-4.4388592255309485) rectangle (23.643237121966948,5.183705631265806);
+			\draw [line width=2.pt] (3.3,0.58) circle (3.6118597016073504cm);
+			\draw [line width=2.pt,dash pattern=on 5pt off 5pt,color=qqffff] (3.3,0.58)-- (6.911209167741081,0.511451835050771);
+			\draw [line width=2.pt,dash pattern=on 5pt off 5pt,color=qqffff] (11.179747275228605,-1.4142063014984596)-- (11.148877806996024,2.19752148171364);
+			\draw [line width=2.pt] (11.179747275228605,-1.4142063014984596)-- (22.737231553562072,-1.3154243845896307);
+			\draw [line width=2.pt] (22.737231553562072,-1.3154243845896307)-- (11.148877806996024,2.19752148171364);
+			\begin{scriptsize}
+			\draw [fill=ududff] (3.3,0.58) circle (2.5pt);
+			\draw[color=ududff] (3.444146237225444,0.9634643632525743) node {$P$};
+			\draw [fill=ududff] (6.911209167741081,0.511451835050771) circle (2.5pt);
+			\draw[color=ududff] (7.218514349158662,1.004940935911181) node {$Q$};
+			\draw[color=qqffff] (5.07210171407576,1.1190015107223494) node {$r_1$};
+			\draw [fill=ududff] (11.179747275228605,-1.4142063014984596) circle (2.5pt);
+			\draw [fill=uuuuuu] (11.148877806996024,2.19752148171364) circle (2.0pt);
+			\draw[color=qqffff] (10.837345313622102,0.49685292084324895) node {$r_2$};
+			\draw [fill=xdxdff] (22.737231553562072,-1.3154243845896307) circle (2.5pt);
+			\draw[color=black] (16.88255577861404,-1.6910362868982547) node {$c$};
+			\end{scriptsize}
+			\end{tikzpicture}
+			}
+			\caption{Unwrapping a circle}
+			\label{unwrap}
+		\end{figure}
+
+		Of the many things that Archimedes is lauded for discovering or inventing is his method for approximating the constant that determines the area and circumference of a circle, known as $\pi$.
+		His was not the first approximation of $\pi$, there is evidence in the historical record that the Babylonians, Sumerians, and Egyptians each had approximations at least as accurate as $22/7 \doteq 3.14$, the approximation used in middle school classrooms across the United States today.
+		The major upshot of the Archimedean method is that it can be iterated in order to achieve any level of accuracy one has the time to compute by painstaking geometric construction.
+		This iterative quality is due to the Method of Exhaustion.
+
+		Archimedes' idea was to inscribe a given circle $C$ with a regular $n$-gon $P$ and take the area of $P$ as a lower-bound for approximating the area of $C$.
+		We will show in a lemma that 
+		In a similar fashion, we circumscribe $C$ with a regular $n$-gon $Q$ and take the area of $Q$ as an upper-bound for approximating the area of $C$.
+		Thus, we have $$\A(P) < \A(C) < \A(Q).$$
+		Next is when Archimedes was particularly clever.
+		Let $P_{1}$ be a regular $2n$-gon inscribed in $C$, and let $Q_{1}$ be a regular $2n$-gon circumscribed about $C$.
+		The areas of these new inscribed and circumscribing polygons provide more accurate upper- and lower-bound estimates for approximating $\A(C)$, thus $$\A(P) < \A(P_{1}) < \A(C) < \A(Q_{1}) < \A(Q).$$
+		We can continue iterating this process as many times as we like to achieve ever better approximations of $\A(C)$.
+
+		\vspace{5mm}
 
 		This brings us to our first lemma, which allows us to inscribe into a circle a regular $n$-gons with a number of sides $n$ that would be such that the difference of the areas of the circle and the inscribed regular $n$-gon is as small as we like.
 		In other words, we can approximate the area of a circle by computing the area of an inscribed regular $n$-gon, and we can make the error between the area of the $n$-gon and the circle to be as small as we need.
+
+		\definecolor{yqyqyq}{rgb}{0.5019607843137255,0.5019607843137255,0.5019607843137255}
+		\definecolor{qqqqff}{rgb}{0.,0.,1.}
+		\definecolor{ffqqff}{rgb}{1.,0.,1.}
+		\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+		\definecolor{qqffqq}{rgb}{0.,1.,0.}
+		\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+		\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+		\begin{figure}[h]
+			\resizebox {\textwidth} {!} {
+			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+			\clip(-2.2057323087868768,-3.4036655878360578) rectangle (8.918616299547809,7.208826489440268);
+			\draw[line width=2.pt,color=yqyqyq,fill=yqyqyq,fill opacity=0.10000000149011612] (5.394938336631308,3.4297144668130515) -- (5.654106899755302,3.6823608799714127) -- (5.401460486596941,3.9415294430954066) -- (5.142291923472947,3.6888830299370454) -- cycle; 
+			\draw[line width=2.pt,color=yqyqyq,fill=yqyqyq,fill opacity=0.10000000149011612] (5.7687276083319645,4.805011003024506) -- (5.50955904520797,4.552364589866145) -- (5.7622054583663305,4.293196026742152) -- (6.021374021490325,4.545842439900512) -- cycle; 
+			\draw [line width=2.pt] (3.02,1.62) circle (4.191515239146817cm);
+			\draw [line width=2.pt,color=qqffqq] (3.073408893535901,5.811174953409995)-- (7.211174953409994,1.566591106464099);
+			\draw [line width=2.pt,color=qqffqq] (7.211174953409994,1.566591106464099)-- (2.966591106464099,-2.5711749534099946);
+			\draw [line width=2.pt,color=qqffqq] (2.966591106464099,-2.5711749534099946)-- (-1.1711749534099942,1.6734088935359013);
+			\draw [line width=2.pt,color=qqffqq] (-1.1711749534099942,1.6734088935359013)-- (3.073408893535901,5.811174953409995);
+			\draw [line width=2.pt,color=ffqqff] (3.073408893535901,5.811174953409995)-- (6.021374021490325,4.545842439900512);
+			\draw [line width=2.pt,color=ffqqff] (6.021374021490325,4.545842439900512)-- (7.211174953409994,1.566591106464099);
+			\draw [line width=2.pt,color=ffqqff] (7.211174953409994,1.566591106464099)-- (5.945842439900513,-1.3813740214903254);
+			\draw [line width=2.pt,color=ffqqff] (5.945842439900513,-1.3813740214903254)-- (2.966591106464099,-2.5711749534099946);
+			\draw [line width=2.pt,color=ffqqff] (2.966591106464099,-2.5711749534099946)-- (0.018625978509674904,-1.3058424399005133);
+			\draw [line width=2.pt,color=ffqqff] (0.018625978509674904,-1.3058424399005133)-- (-1.1711749534099942,1.6734088935359013);
+			\draw [line width=2.pt,color=ffqqff] (-1.1711749534099942,1.6734088935359013)-- (0.09415756009948772,4.621374021490325);
+			\draw [line width=2.pt,color=ffqqff] (0.09415756009948772,4.621374021490325)-- (3.073408893535901,5.811174953409995);
+			\draw [line width=2.pt,dash pattern=on 4pt off 4pt,color=qqqqff] (3.02,1.62)-- (3.073408893535901,5.811174953409995);
+			\draw [line width=2.pt,dash pattern=on 4pt off 4pt,color=qqqqff] (3.02,1.62)-- (7.211174953409994,1.566591106464099);
+			\draw [line width=2.pt,dash pattern=on 4pt off 4pt,color=qqqqff] (3.02,1.62)-- (6.021374021490325,4.545842439900512);
+			\draw [line width=2.pt,dotted,color=qqffqq] (3.073408893535901,5.811174953409995)-- (3.9524909915532804,6.668134363373463);
+			\draw [line width=2.pt,dotted,color=qqffqq] (3.9524909915532804,6.668134363373463)-- (8.090257051427374,2.423550516427567);
+			\draw [line width=2.pt,dotted,color=qqffqq] (8.090257051427374,2.423550516427567)-- (7.211174953409994,1.566591106464099);
+			\begin{scriptsize}
+			\draw [fill=ududff] (3.02,1.62) circle (2.5pt);
+			\draw[color=ududff] (2.6398428518987838,1.4504405150339017) node {$O$};
+			\draw [fill=xdxdff] (3.073408893535901,5.811174953409995) circle (2.5pt);
+			\draw[color=xdxdff] (2.998142423639625,6.244830022613721) node {$A$};
+			\draw [fill=xdxdff] (2.966591106464099,-2.5711749534099946) circle (2.5pt);
+			\draw[color=xdxdff] (3.0322661923768477,-2.8832781145934088) node {$C$};
+			\draw [fill=xdxdff] (7.211174953409994,1.566591106464099) circle (2.5pt);
+			\draw[color=xdxdff] (7.502479896953056,1.5528118212455704) node {$B$};
+			\draw [fill=xdxdff] (-1.1711749534099942,1.6734088935359013) circle (2.5pt);
+			\draw[color=xdxdff] (-1.745061430834367,1.7404925493002963) node {$D$};
+			\draw [fill=uuuuuu] (6.021374021490325,4.545842439900512) circle (2.0pt);
+			\draw[color=uuuuuu] (6.222838569307195,4.931064926230639) node {$E$};
+			\draw [fill=uuuuuu] (5.945842439900513,-1.3813740214903254) circle (2.0pt);
+			\draw[color=uuuuuu] (6.205776684938583,-1.450079827630046) node {$F$};
+			\draw [fill=uuuuuu] (0.018625978509674904,-1.3058424399005133) circle (2.0pt);
+			\draw[color=uuuuuu] (-0.41423445008267146,-1.3988941745242116) node {$G$};
+			\draw [fill=uuuuuu] (0.09415756009948772,4.621374021490325) circle (2.0pt);
+			\draw[color=uuuuuu] (-0.20949183765933366,4.82869362001897) node {$H$};
+			\draw[color=qqqqff] (4.977321010398557,1.31394544008501) node {$r$};
+			\draw [fill=uuuuuu] (3.9524909915532804,6.668134363373463) circle (2.0pt);
+			\draw[color=uuuuuu] (4.124226791967983,6.944367281726791) node {$A'$};
+			\draw [fill=uuuuuu] (8.090257051427374,2.423550516427567) circle (2.0pt);
+			\draw[color=uuuuuu] (8.253202809171961,2.713019958311149) node {$B'$};
+			\end{scriptsize}
+			\end{tikzpicture}
+			}
+			\caption{Construction for $n=0$}
+			\label{nzero}
+		\end{figure}
 
 		\begin{lemma}
 		Given a circle $C$ and a small number $\ep \in \R$ with $\ep > 0$, there exists a regular polygon $P$ inscribed in $C$ such that $\A(C) - \A(P) < \ep$.
@@ -285,15 +440,15 @@
 			\begin{align*}
 			M_{0} - M_{1} &= [\A(C) - \A(P_{0})] - [\A(C) - \A(P_{1})], \\
 			&= \A(P_{1}) - \A(P_{0}), \\
-			&= 4 \A(\triangle QQQ), \\
-			&= 2 \A(UWW'U'), \\
-			&> 2 \A(QQQ), \\
-			&> \tfrac{1}{2} \cdot 4 \cdot \A(QQQ), \\
+			&= 4 \A(\triangle ABE), \\
+			&= 2 \A(ABB'A'), \\
+			&> 2 \A(\frown{ABE}), \\
+			&> \tfrac{1}{2} \cdot \left[ 4 \cdot \A(\frown{ABE}) \right], \\
 			&> \tfrac{1}{2} \left[ \A(C) - \A(P_{0}) \right], \\
 			&> \tfrac{1}{2} M_{0}.
 			\end{align*}
 		Hence, the claim is true for $n=0$, and it should be clear that if we continue in this manner, changing what needs to be changed along the way, we will arive at the result $M_{n} - M_{n+1} > \tfrac{1}{2}M_{n}$.
-		Thus, by \ref{axe:archimedean} there exists some $N \in \N$ such that $M_{N} < \ep$, as we aimed to show.
+		Thus, by \ref{axe:eudoxus} there exists some $N \in \N$ such that $M_{N} < \ep$, as we aimed to show.
 		\end{proof}
 
 		\begin{lemma}
@@ -307,17 +462,14 @@
 		\end{thm}
 		\begin{proof}
 		\end{proof}
+
+		Method with perimeters.
 		% subsection approximation_of_pi (end)
 
-		% \subsection{Quadrature of the Parabola}
-		% \label{sub:quadrature_of_the_parabola}
-		% % subsection quadrature_of_the_parabola (end)
-
-		% \subsection{Quadrature of the Lune}
-		% \label{sub:quadrature_of_the_lune}
-		% % subsection quadrature_of_the_lune (end)
+		\subsection{Quadrature of the Parabola}
+		\label{sub:quadrature_of_the_parabola}
+		% subsection quadrature_of_the_parabola (end)
 	% section applications (end)
-	\newpage
 
 	\section{Descendants}
 	\label{sec:descendants}
@@ -336,32 +488,130 @@
 	\section{References}
 	\label{sec:references}
 	\begin{enumerate}
+		\item Abbott, Stephen; \textit{Understanding Analysis}, 2nd edition
 		\item Beckmann, Petr; \textit{A History of $\pi$}
 		\item Dunham, William; \textit{Journey Through Genius}
 		\item Edwards Jr., C.H.; \textit{The Historical Development of the Calculus}
 		\item Euclid; \textit{The Elements}
 	\end{enumerate}
 	% section references (end)
+	\newpage
 
 	\section{Euclid's Axioms \& Definitions}
 	\label{sec:euclid_s_axioms_&_definitions}
-		\begin{axe}[Euclid's 1st Postulate]
+	The following are the definitions, postulates, and common notions with which Euclid composed \textit{The Elements}.
+
+		\begin{defn}
+		A \textbf{point} is that which has no part.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{line} is breadthless length.
+		\end{defn}
+
+		\begin{defn}
+		The extremities of a line are points.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{straight line} is a line which lies evenly with the points on itself.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{surface} is that which has length and breadth only.
+		\end{defn}
+
+		\begin{defn}
+		The extremities of a surface are lines.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{plane surface} is a surface which lies evenly with the straight lines on itself.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{plane angle} is the inclination to one another of two lines in a plane which meet one another and do not lie in a straight line.
+		\end{defn}
+
+		\begin{defn}
+		And when the lines containing the angle are straight, the angle is called \textbf{rectilineal}.
+		\end{defn}
+
+		\begin{defn}
+		When a straight line set up up on a straight line makes the adjacent angles equal to one another, each of the equal angles is \textbf{right}, and the straight line standing on the other is called \textbf{perpendicular} to that on which it stands.
+		\end{defn}
+
+		\begin{defn}
+		An \textbf{obtuse angle} is an angle greater than a right angle.
+		\end{defn}
+
+		\begin{defn}
+		An \textbf{acute angle} is an angle less than a right angle.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{boundary} is that which is an extremity of anything.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{figure} is that which is contained by any boundary or boundaries.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{circle} is a plane figure contained by one line such that all the straight lines falling upon it from one point among those lying within the figure are equal to one another.
+		\end{defn}
+
+		\begin{defn}
+		And the point is called the \textbf{center} of the circle.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{diameter} of the circle is any straight line drawn through the center and terminated in both directions by the circumference of the circle, and such a straight line also bisects the circle.
+		\end{defn}
+
+		\begin{defn}
+		A \textbf{semicircle} is the figure contained by the diameter and the circumference cut off by it.
+		And the center of the semicircle is the same as that of the circle.
+		\end{defn}
+
+		\begin{defn}
+		\textbf{Rectilineal figures} are those which are contained by straight lines, \textbf{trilateral} figures being those contained by three, \textbf{quadrilateral} those contained by four, and \textbf{multilateral} those contained by more than four straight lines.
+		\end{defn}
+
+		\begin{defn}
+		Of trilateral figures, an \textbf{equilateral triangle} is that which has three sides equal, and \textbf{isoceles triangle} that which has two sides alone equal, and a \textbf{scalene triangle} that which has its three sides unequal.
+		\end{defn}
+
+		\begin{defn}
+		Further, of trilateral figures, a \textbf{right-angled triangle} is that which has a right angle, an \textbf{obtuse-angled triangle} is that which has an obtuse angle, and an \textbf{acute-angled triangle} that which has its three angles acute.
+		\end{defn}
+
+		\begin{defn}
+		Of quadrilateral figures, a \textbf{square} is that which is both equilateral and right-angled; an \textbf{oblong} that which is right-angled but not equilateral; a \textbf{rhombus} that which is equilateral but not right-angled; and a \textbf{rhomboid} that which has its opposite sides and equal to one another but is neither equilateral nor right-angled.
+		And let quadrilaterals other than these be called \textbf{trapezia}.
+		\end{defn}
+
+		\begin{defn}
+		\textbf{Parallel} straight lines are straight lines which, being in the same plane and being produced infinitely in both directions, do not meet one another in either direction.
+		\end{defn}
+
+		\begin{axe}
 		To draw a straight line from any point to any point.
 		\end{axe}
 
-		\begin{axe}[Euclid's 2nd Postulate]
+		\begin{axe}
 		To produce a finite straight line continuously in a straight line.
 		\end{axe}
 
-		\begin{axe}[Euclid's 3rd Postulate]
+		\begin{axe}
 		To describe a circle with any center and distance.
 		\end{axe}
 
-		\begin{axe}[Euclid's 4th Postulate]
+		\begin{axe}
 		That all right angles are equal to one another.
 		\end{axe}
 
-		\begin{axe}[Euclid's 5th Postulate]
+		\begin{axe}[The Parallel Postulate]
 		That, if a straight line falling on two straight lines make the interior angles on the same side less than two right angles, the two straight lines, if produced infinitely, meet on that side on which are the angles less than the two right angles.
 		\end{axe}
 
