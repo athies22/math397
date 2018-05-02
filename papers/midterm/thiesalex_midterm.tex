@@ -462,10 +462,6 @@
 		\begin{proof}
 		\end{proof}
 		% subsection approximation_of_pi (end)
-
-		\subsection{Quadrature of the Parabola}
-		\label{sub:quadrature_of_the_parabola}
-		% subsection quadrature_of_the_parabola (end)
 	% section applications (end)
 
 	\section{Descendants}
@@ -510,6 +506,44 @@
 
 	\section{Conclusion}
 	\label{sec:conclusion}
+	Throughout, we have seen how nearly two millennia before Fermat, Newton, and Leibniz, there was Archimedes of Syracuse, standing on the cusp of calculus.
+	His algorithm planted the seed of an idea that would bear fruit across centuries and civilizations, enabling countless mathematical advances.
+	In fact, Archimedes' \textit{Exhaustive Method} of estimating $\pi$ was the best tool for such estimations until the 17th century.\textbf{[3]}
+	We can pair this ancient algorithm with modern software, and easily determine how long it would take to achieve certain levels of accuracy with Archimedes' tool.
+	Utilizing formulae for the area of regular $n$-gons inscribed in and circumscribed about a unit circle, we use sage to compute the following estimates of $\pi$ to twenty decimal places.\footnote{The area formulae and sage code is Appendix \ref{sec:sage_code}.}
+	We start with familiar shapes like the square, hexagon, and octagon.
+	From there we take off until we achieve twenty places of accuracy.
+		\begin{figure}[h]
+			\begin{tabular}{r|l}
+				$n$ & Estimated value for $\pi$ \\
+				\hline
+				4 & 3.0000000000000000000 \\
+				6 & 3.0310889132455352637 \\
+				8 & 3.0710678118654752440 \\
+				10 & 3.0940616118957144537 \\
+				100 & 3.1410762904003917928 \\
+				1000 & 3.1415874859178158755 \\
+				1,000 & 3.1415926019126695182 \\
+				$\vdots$ & $\vdots$ \\
+				10,000,000,000 & 3.1415926535897932384 \\
+				$\vdots$ & $\vdots$ \\
+				$\infty$ & 3.1415926535897932385\dots 
+			\end{tabular}
+		\end{figure}
+
+	So, with a pair of regular 10,000,000,000-gons, you could use a two-thousand year old mathematical tool to get a 20-digit approximation of $\pi$.
+
+	We can take many lessons from Archimedes and his \textit{Method}, but we'll highlight two of them that appear in contrast to one another.
+	The first is to demystify the Calculus, and Analysis generally.
+	Nonmathematicians often regard Calculus as impossibly difficult for most to grasp, and a relatively new concept.
+	Contrary to these assumptions, Calculus is relatively simple, at least conceptually; and it is far from new, especially given that Archimedes dipped his toe into the subject before the existance of the Roman Empire.
+	The rough ideas behind Calculus can be explained to the nonmathematician in about twenty minutes, it is in the finer details where the difficulties lay waiting.
+	
+	The second lesson is to venerate those who pioneered in the study of Analysis.
+	Archimedes was the first mathematician to approach the concepts that would form the bedrock of Analysis, and that was with a unique pairing of supreme intellect and prolific work-ethic that would go unrivaled in the Western world for centuries.
+	It took the cleverness and hard-work of the greatest mathematicians of the Rennaissance and Enlightenment periods to pickup where Archimedes left off and invent a new subject of mathematics that we know call Analysis.
+	And in modern times, it is often a university student's first course in real analysis that introduces them to what it actually means for mathematics course to be difficult.
+	That Archimedes was able to get so close to such a difficult topic with only the tools of Euclidean Geometry is truly astounding.
 	% section conclusion (end)
 	\newpage
 
@@ -527,4 +561,31 @@
 		\item Euclid; \textit{The Elements}
 	\end{enumerate}
 	% section references (end)
+
+	\section{Sage Code}
+	\label{sec:sage_code}
+	I'm not great at using Sage yet, so I'm certain that there exists a cleaner, more elegant way to write this code as a function, so as to not change $n$ and $m$ by hand so much.
+
+	These use the following area formulae, found in my class notes from Math 395.
+	Let $C$ be a unit circle with regular $n$-gon $P$ inscribed, and circumscribed by the regular $n$-gon $Q$, then \[ \A(P) = \left(\frac{n}{2} \right) \sin(\alpha), \hspace{2.5mm} \text{and} \hspace{2.5mm} \A(Q) = \left(\frac{n}{2} \right)\sin(\alpha)\left(\frac{1}{\cos(\tfrac{\alpha}{2})}\right)^{2}. \]
+
+	\begin{verbatim}
+		n = var('n')
+		alpha = var('alpha')
+
+		insc(alpha,n) = 0.5*n*sin(alpha)
+		circ(alpha,n) = (n/2)*sin(alpha)*((1/cos((alpha/2)))^2)
+
+		n = 10000000000
+		alpha = (2*pi)/n
+
+		A = N(insc(alpha,n), digits=20)
+		B = N(circ(alpha,n), digits=20)
+		C = N((A+B)/2,digits=20)
+		P = N(pi,digits=20)
+
+		print 'Estimated value of pi =', C
+		print 'Actual value of pi    =', P
+	\end{verbatim}
+	% section sage_code (end)
 \end{document}
