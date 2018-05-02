@@ -11,7 +11,7 @@
 	\usepackage{hyperref}
 	\usepackage{verbatim}
 	\usepackage{stmaryrd}
-	\usepackage[margin=2in]{geometry}
+	\usepackage[margin=1.25in]{geometry}
 
 	\raggedbottom
 
@@ -96,6 +96,7 @@
 	% The default \theoremstyle is bold headings and italic body text.
 	\newtheorem{thm}{Theorem}[section]
 	\newtheorem{axe}[thm]{Axiom}
+	\newtheorem{cn}[thm]{Common Notion}
 	\newtheorem{defn}[thm]{Definition}
 	\newtheorem{prop}[thm]{Proposition}
 	\newtheorem{claim}[thm]{Claim}
@@ -201,41 +202,80 @@
 	\pagenumbering{arabic}
 	\section{Introduction}
 	\label{sec:introduction}
-	Greek geometry, axiomatic constructions, aristotilean dogma about infinity and zero, how the method of exhaustion was on the precipice of the limit.
+	More than two millenia ago, the Ancient Greeks were becoming the first civilization to bring logical rigor to their mathematics.
+	Even more impressively, they were taking care to record their mathematics in tomes that are still taught in classrooms today.
+	As a result of their logical, axiomatic structures, their mathematical researches led to results that challenged philosophical and religious dogmas.
+	To their credit, the mathematicians of Ancient Greece changed their views according to the uncomfortable truths they uncovered through mathematics.\footnote{For example, there was a time when Ancient Greek metaphysics assumed that any measurable thing, i.e., anything with a magnitude, could be composed of incommensurable units. This manifested in the atom hypothesis, centuries ahead of of its time. It also required that irrational numbers such as $\sqrt{2}$ could not exist, when they in fact do. This was discovered by a student of Pythagoras when examining a unit square, whose diagonal is of length $\sqrt{2}$. Although this upset the Pythagoreans at the time, centuries later Euclid would go on to include in \textit{The Elements} an entire book on irrational numbers (Book X, the longest book in \textit{The Elements}).}
+	Among the greatest mathematicians of Ancient Greece are Euclid, Pythagoras, Eudoxus, and Hippocrates of .
+	Rising above them all was Archimedes of Syracuse.
 
-	Remark on applications of the method of exhaustion, as well as its descendants.
+	If you were to ask a layman what Archimedes was best known for, if you got any answer, it would likely be that he used the varying densities of metals and their displacement in water to show that a crown that was supposedly made of pure gold was in fact not pure gold.
+	That on its own was a particularly clever discovery, but it is dwarfed by Archimedes' greatest achievements.
+	This example underscores that beyond mathematics, Archimedes made notable contributions to physics and engineering.
+	He invented the Archimedes Screw, a device helps farmers with irrigation, after that he developed the engineering fundamentals for the lever, and used them to great effect in wartime.\textbf{[5]}
+	In the field of mathematics Archimedes he developed an algorithm that could achieve an approximation of $\pi$ to any desired level of accuracy.\textbf{[3]}
+	A cousin of this algorithm allowed him to compute the area of a parabolic section.\textbf{[2]}
+	Without other fields of mathematics in which to play, Archimedes pushed the bounds of Euclidean Geometry to heights that would unmatched for centuries.
 
-	% The Ancient Greeks have a high station in the Pantheon of Mathematics not necessarily because they were the first civilization to make certain mathematical discoveries, but rather because they were the first to base their mathematics on an rigorous, axiomatic system; additionally, they were the first to write down their mathematics in a way that survived history.
-	% The mathematical ability of the Ancient Egyptians was certainly quite strong, given their ability to build such wonders as the Pyramids, as well as maintain scrupulous administrative records.
-	% Similarly, modern archaeology has shown us that the Babylonians and Summerians were quite adept at mathematics themselves.
-	% Nonetheless, it was the mathematics of Ancient Greece that ended up having a lasting impact in western academia.
+	Were it not for the contemporary philisophical concerns about the concepts of the infinitely-small and infinity-large, Archimedes might have been able to broach the subject of analysis by creating the precursor to the limit.\textbf{[3]}
+	Analysis, specifically calculus, is grounded in the study of limits.
+	This was not always true in the modern rigorous sense that the derivative is defined as the limit of a difference quotient, and the integral is defined as the limit of a riemann sum.
+	Nonetheless, Calculus has always been the study of infinitely-small rates of change and their relationship to instantaneous rates of change, and the study of using infinitely-many objects to approximate the area of a figure.
+	Archimedes came amazingly close to the latter of these branches of Calculus with his \textit{Method of Exhaustion}.
+	It was by this method that he achieved the mathematical advances listed above.
 
-	% The mathematics of Ancient Greece, highlighted by the works of Euclid, Archimedes, Hypatia, Eudoxus, and many others, was grounded in the field of geometry.
-	% According to the Ancient Greeks, numbers existed if and only if they could be constructed by a compass and straight-edge, both of which must be unmarked.
-	% One could divide by two or three only because it could be proved that you could cut up a given line segment into exactly halves or thirds with your Euclidean tools.
-	% Proofs, according to the Ancient Greeks, must be built from a small set of axioms (or postulates), along with definitions and some common sense.
-	% Given this obsession with geometry, many of the early questions of western mathematics are related to the areas of shapes and volumes of solids.
+	Students of Calculus will be familiar with the concept of approximating the area of a figure by using infinitely-many rectangles to fill the figure, this is a layman's description of the integral.
+	Instead of the radio-active concepts of infinitely-many rectangles, Archimedes' clever mind created an algorithm that allows for the creation of as many polygons as one wanted.
+	It was an algorithm that could have infinite run-time, creating better approximations by each iteration.
 
-	% With \textit{The Elements} as your tool box, a person can devise ways to compute the area of just about any \textbf{rectilineal figure}, however that still leaves un-measured all of the \textbf{curvilinear figures}.\footnote{Some people call rectilineal figures, polygonal figures.}
-	% The basic idea for computing the area of rectilineal figures is to cut them up into trilateral or quadrilateral figures, and compute the sum of the areas of each of those new figures.
-	% That strategy doesn't really work with curvilinear figures, given their varying curviture.
-	% Whereas rectilineal figures have a `prime' element, the triangle; there is no analogous `prime' element from the curvilinear figures.
-	% Nonetheless, it is possible to classify some of the curvilinear figures and determine methods to compute the area of the `easy' ones.
-	% Enter Archimedes of Syracuse, the greatest mathematician of the ancient world, and his quest to determine the area of a circle.
-	% The circle can be seen as one of the most pleasant curvilinear figures that exists.
-	% Its symmetric, its an extremely useful tool in Euclidean constructions, it appears in nature all the time, etc.
-
+	We will show \textit{The Method of Exhaustion}, as well as two of its applications.
+	Going further, we will describe a few of the mathematical descendants of \textit{The Method}, underscoring its genius and that of its inventor.
 	% section introduction (end)
 
 	\section{The Method of Exhaustion}
 	\label{sec:the_method_of_exhaustion}
 		\subsection{Axioms and Definitions}
 		\label{sub:axioms_and_definitions}
-		% Archimedes devised his Method of Exhaustion in the era of Euclidean geometry, restricted by the axiomatic style of \textit{The Elements}.\footnote{The interested reader can find the definitions, postulates (a.k.a., axioms), and common notions from \textit{The Elements} in Appendix \ref{sec:euclid_s_axioms_&_definitions}.}
-		% In addition to tools from Euclid, Archimedes relied on the following two axioms related to the area of curvilinear figures in the plane.\footnote{It should be clear that these are modern re-statements of concepts that the Greeks would have described in very different language.}
+		These are modern restatements of the axioms that Archimedes used in the crafting of his \textit{Method}.
+		Let $\Omega_{2}$ denote the set of all two-dimension shapes in the plane.
 
-		We begin with some necessary definitions and axioms:
+		\begin{axe}
+		Let $S,T \in \Omega_{2}$, if $S \subset T$, then $\A(S) \leq \A(T)$.
+		\end{axe}
 
+		\begin{axe}
+		Let $S,T \in \Omega_{2}$ such that $S \cap T = \emptyset$, consider $R = S \cup T$, then $\A(R) = \A(S) + \A(T)$.
+		\end{axe}
+
+		Additionally, Archimedes' Method of Exhaustion required a principle that we now attribute to the Greek mathematician Eudoxus:\footnote{Euclid includes this as the first proposition from the tenth book of \textit{The Elements}. Book X is by far the longest of the books from \textit{The Elements}, it is devoted to the study of irrational numbers.}
+		A modern statement of Eudoxus' Principle is:
+		\begin{axe}[Eudoxus' Principle]
+		\label{axe:eudoxus}
+		Given two magnitudes $a$ and $b$, there exists $n \in \N$ such that $na>b$.
+		\end{axe}		
+		% subsection axioms_and_definitions (end)
+
+		\subsection{The Method}
+		\label{sub:the_method}
+		Our goal with \textit{The Method} will be, given any magnitude $M$, and small real number $\ep > 0$, to construct new, smaller, magnitudes from $M$, such that one of these new magnitudes will be less than $\ep$.
+		In other words, \textit{The Method} is what allows us to make something as small as we'd wish.
+
+		Let $M_{0}, \ep \in \R^{+}$, and $M_{1}, M_{2}, \dots$ such that $M_{1} < \tfrac{1}{2}M_{0}, \, M_{2} < \tfrac{1}{2}M_{1}, \dots$.
+		Then, we want to continue making new $M_{i}$'s, until we get $M_{N} < \ep$ for some $N \in \N$.
+		By Eudoxus' Principle, choose $N$ such that $(N+1)\ep > M_{0}$.
+		Since $N \in \N$, we know $N+1 \geq 2$, thus $\ep \leq \frac{1}{2}(N+1)\ep$.
+		This gives us $(N+1)\ep - \ep > \tfrac{1}{2}(N+1)\ep > \tfrac{1}{2}M_{0}$.
+		Therefore $N\ep > \tfrac{1}{2}M_{0} > M_{1}$, which implies $N\ep > M_{1}$.
+
+		If we repeat this process, we get $(N-1)\ep > M_{2}$, until eventually we arrive at $(N - (N-1))\ep = \ep > M_{N}$, thereby achieving our desired goal of constructing a magnitude less than $\ep$.
+		% subsection the_method (end)
+	% section the_method_of_exhaustion (end)
+
+	\section{Applications}
+	\label{sec:applications}
+		\subsection{Approximation of $\pi$}
+		\label{sub:approximation_of_pi}
+		We begin with some definitions:
 		\begin{defn}
 		\label{defn:fig}
 		For the sake of mathematical rigor, we define a two-dimensional shape in the plane as a \textbf{figure}; the sides of the figure, or the extremities, are called the \textbf{boundary} of the figure; if the boundary of a figure is composed of only straight lines, then we say that figure is \textbf{rectilinear}, or \textbf{polygonal}; if the boundary of a figure contains at least one segment that is not a straight line, then we say that figure is \textbf{curvilinear}.
@@ -248,8 +288,7 @@
 
 		\begin{defn}
 		\label{defn:polygon}
-		Let $P_{1}P_{2} \cdots P_{n}$ be a set of points in the plane that can be connected by non-intersecting straight-line segments, these non-intersecting straight-line segments connected by \\
-		$P_{1}P_{2} \cdots P_{n}$ form the boundary of a figure called $P_{1}P_{2} \cdots P_{n}$.
+		Let $P_{1}P_{2} \cdots P_{n}$ be a set of points in the plane that can be connected by non-intersecting straight-line segments, these non-intersecting straight-line segments connected by $P_{1}P_{2} \cdots P_{n}$ form the boundary of a figure called $P_{1}P_{2} \cdots P_{n}$.
 		We say that $P_{1}P_{2} \cdots P_{n}$ is a \textbf{polygon}, that $P_{1}P_{2} \cdots P_{n}$ are its \textbf{vertices}, that $\overline{P_{i}P_{i+1}}$ are its \textbf{sides}, and that $P_{i}P_{i+1} = a_{i}$ are the \textbf{lengths}, or \textbf{magnitudes} of its sides.
 
 		If a polygon $P$ is such that its sides are all of the same length, and its interior angles are all of the same measure, then and only then is $P$ called a \textbf{regular polygon}; if $P$ has $n$ sides then it can be called a \textbf{regular n-gon}.
@@ -267,104 +306,38 @@
 		We call this function the \textbf{area function}, it is defined piece-wise, but given the myriad of irregular shapes in a two-dimensional plane, it is far too cumbersome to explicitly define each mapping that $\A$ can take.
 		One mapping that the reader will be familiar with is for a square $ABCD$ with side length $AB = s$, we have $\A(ABCD) = s^{2}$, another is for $\triangle ABC$ with base $b$ and height $h$ we have $\A(\triangle ABC) = (1/2)bh$.
 		\end{defn}
+		Now that we've agreed on what to call things, let's get into the problem at hand.
 
-		\begin{axe}[Relative areas of figures]
-		If a figure $S$ is contained in a figure $T$, then the area of figure $S$ is less than that of $T$.
-		\end{axe}
-
-		\begin{axe}[Sums of areas of overlapping figures]
-		If $R$ is the union of non-overlapping figures $S$ and $T$, then the area of $R$ is the sum of the areas of $S$ and $T$.
-		\end{axe}
-
-		Additionally, Archimedes' Method of Exhaustion required a principle that we now attribute to the Greek mathematician Eudoxus:\footnote{Euclid includes this as the first proposition from the tenth book of \textit{The Elements}. Book X is by far the longest of the books from \textit{The Elements}, it is devoted to the study of irrational numbers.}
-		A modern statement of Eudoxus' Principle is:
-		\begin{axe}[Eudoxus' Principle]
-		\label{axe:eudoxus}
-		Given two magnitudes $a$ and $b$, there exists $n \in \N$ such that $na>b$.
-		\end{axe}		
-		% subsection axioms_and_definitions (end)
-
-		\subsection{The Method}
-		\label{sub:the_method}
-		% subsection the_method (end)
-	% section the_method_of_exhaustion (end)
-	\newpage
-
-	\section{Applications}
-	\label{sec:applications}
-		\subsection{Approximation of $\pi$}
-		\label{sub:approximation_of_pi}
-		Ancient maths and circles.
-
-		\vspace{5mm}
-
-		Perimeter and area of circles.
-
-		\vspace{5mm}
-
-		The existence of a constant of proportionality ...
-
-		\vspace{5mm}
-
-		\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
-		\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
-		\definecolor{qqffff}{rgb}{0.,1.,1.}
-		\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
-		\begin{figure}[h]
-			\resizebox {\textwidth} {!} {
-			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-			\clip(-1.6367339134538867,-4.4388592255309485) rectangle (23.643237121966948,5.183705631265806);
-			\draw [line width=2.pt] (3.3,0.58) circle (3.6118597016073504cm);
-			\draw [line width=2.pt,dash pattern=on 5pt off 5pt,color=qqffff] (3.3,0.58)-- (6.911209167741081,0.511451835050771);
-			\draw [line width=2.pt,dash pattern=on 5pt off 5pt,color=qqffff] (11.179747275228605,-1.4142063014984596)-- (11.148877806996024,2.19752148171364);
-			\draw [line width=2.pt] (11.179747275228605,-1.4142063014984596)-- (22.737231553562072,-1.3154243845896307);
-			\draw [line width=2.pt] (22.737231553562072,-1.3154243845896307)-- (11.148877806996024,2.19752148171364);
-			\begin{scriptsize}
-			\draw [fill=ududff] (3.3,0.58) circle (2.5pt);
-			\draw[color=ududff] (3.444146237225444,0.9634643632525743) node {$P$};
-			\draw [fill=ududff] (6.911209167741081,0.511451835050771) circle (2.5pt);
-			\draw[color=ududff] (7.218514349158662,1.004940935911181) node {$Q$};
-			\draw[color=qqffff] (5.07210171407576,1.1190015107223494) node {$r_1$};
-			\draw [fill=ududff] (11.179747275228605,-1.4142063014984596) circle (2.5pt);
-			\draw [fill=uuuuuu] (11.148877806996024,2.19752148171364) circle (2.0pt);
-			\draw[color=qqffff] (10.837345313622102,0.49685292084324895) node {$r_2$};
-			\draw [fill=xdxdff] (22.737231553562072,-1.3154243845896307) circle (2.5pt);
-			\draw[color=black] (16.88255577861404,-1.6910362868982547) node {$c$};
-			\end{scriptsize}
-			\end{tikzpicture}
-			}
-			\caption{Unwrapping a circle}
-			\label{unwrap}
-		\end{figure}
-
-		Of the many things that Archimedes is lauded for discovering or inventing is his method for approximating the constant that determines the area and circumference of a circle, known as $\pi$.
+		The application of \textit{The Method of Exhaustion} with which Archimedes has gained the most praise is his approximation of $\pi$.
 		His was not the first approximation of $\pi$, there is evidence in the historical record that the Babylonians, Sumerians, and Egyptians each had approximations at least as accurate as $22/7 \doteq 3.14$, the approximation used in middle school classrooms across the United States today.
-		The major upshot of the Archimedean method is that it can be iterated in order to achieve any level of accuracy one has the time to compute by painstaking geometric construction.
-		This iterative quality is due to the Method of Exhaustion.
+		The major upshot of the \textit{Method} is that it can be iterated in order to achieve any level of accuracy one has the time to compute by painstaking geometric construction.
 
 		Archimedes' idea was to inscribe a given circle $C$ with a regular $n$-gon $P$ and take the area of $P$ as a lower-bound for approximating the area of $C$.
-		We will show in a lemma that 
 		In a similar fashion, we circumscribe $C$ with a regular $n$-gon $Q$ and take the area of $Q$ as an upper-bound for approximating the area of $C$.
 		Thus, we have $$\A(P) < \A(C) < \A(Q).$$
 		Next is when Archimedes was particularly clever.
 		Let $P_{1}$ be a regular $2n$-gon inscribed in $C$, and let $Q_{1}$ be a regular $2n$-gon circumscribed about $C$.
 		The areas of these new inscribed and circumscribing polygons provide more accurate upper- and lower-bound estimates for approximating $\A(C)$, thus $$\A(P) < \A(P_{1}) < \A(C) < \A(Q_{1}) < \A(Q).$$
-		We can continue iterating this process as many times as we like to achieve ever better approximations of $\A(C)$.
+		This enables the use of the \textit{Method of Exhaustion} to construct regular $n$-gons with ever increasing values for $n$, and ever decreasing error in the approximation of the area of $C$.
 
-		\vspace{5mm}
+		This brings us to our first lemma, which allows us to inscribe into a circle, regular $n$-gons with ever increasing number of sides, so that we can approximate the area of a circle by computing the area of our inscribed regular $n$-gons, and continue to making $n$ larger until we can make the error between the area of the $n$-gon and the circle to be as small as we need.
 
-		This brings us to our first lemma, which allows us to inscribe into a circle a regular $n$-gons with a number of sides $n$ that would be such that the difference of the areas of the circle and the inscribed regular $n$-gon is as small as we like.
-		In other words, we can approximate the area of a circle by computing the area of an inscribed regular $n$-gon, and we can make the error between the area of the $n$-gon and the circle to be as small as we need.
+		\begin{lemma}
+		Given a circle $C$ and a small number $\ep \in \R$ with $\ep > 0$, there exists a regular polygon $P$ inscribed in $C$ such that $\A(C) - \A(P) < \ep$.
+		\end{lemma}
+		\begin{proof}
+		Let $C$ be a circle in the plane with center $O$ and radius $r$; let $P_{0} = ABCD$ be a square which is inscribed in $C$.
 
-		\definecolor{yqyqyq}{rgb}{0.5019607843137255,0.5019607843137255,0.5019607843137255}
-		\definecolor{qqqqff}{rgb}{0.,0.,1.}
-		\definecolor{ffqqff}{rgb}{1.,0.,1.}
-		\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
-		\definecolor{qqffqq}{rgb}{0.,1.,0.}
-		\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
-		\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
-		\begin{figure}[h]
-			\resizebox {\textwidth} {!} {
+		\begin{figure}[b]
+			\definecolor{yqyqyq}{rgb}{0.5019607843137255,0.5019607843137255,0.5019607843137255}
+			\definecolor{qqqqff}{rgb}{0.,0.,1.}
+			\definecolor{ffqqff}{rgb}{1.,0.,1.}
+			\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+			\definecolor{qqffqq}{rgb}{0.,1.,0.}
+			\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+			\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1.}
+
+			\resizebox {0.6\textwidth} {!} {
 			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
 			\clip(-2.2057323087868768,-3.4036655878360578) rectangle (8.918616299547809,7.208826489440268);
 			\draw[line width=2.pt,color=yqyqyq,fill=yqyqyq,fill opacity=0.10000000149011612] (5.394938336631308,3.4297144668130515) -- (5.654106899755302,3.6823608799714127) -- (5.401460486596941,3.9415294430954066) -- (5.142291923472947,3.6888830299370454) -- cycle; 
@@ -419,11 +392,6 @@
 			\label{nzero}
 		\end{figure}
 
-		\begin{lemma}
-		Given a circle $C$ and a small number $\ep \in \R$ with $\ep > 0$, there exists a regular polygon $P$ inscribed in $C$ such that $\A(C) - \A(P) < \ep$.
-		\end{lemma}
-		\begin{proof}
-		Let $C$ be a circle in the plane with center $O$ and radius $r$; let $P_{0} = ABCD$ be a square which is inscribed in $C$.
 		Let $M_{0} = \A(C) - \A(P_{0})$.
 		Next, we double the number of sides of $P_{0}$, and create the regular octogon $P_{1}$.
 		Continue this process, generating a sequence of regular polygons $P_{0}, P_{1}, \dots, P_{n}$ each with $2^{n+2}$-many sides.
@@ -451,19 +419,48 @@
 		Thus, by \ref{axe:eudoxus} there exists some $N \in \N$ such that $M_{N} < \ep$, as we aimed to show.
 		\end{proof}
 
+		Now, we can play the inscribing/circumscribing game as many times as we'd like to achieve bounds for the area of $C$.
+		It remains to show these areas relate to $\pi$.
+
+		\vspace{5mm}
+
+		NEXT LEMMA/THEOREM SETUP
+
+		\vspace{5mm}
+
 		\begin{lemma}
 		The ratio of areas of two similar regular polygons is proportional to the ratio of the squares of their corresponding sides.
 		\end{lemma}
 		\begin{proof}
+		Let $P$ be a regular $n$-gon with sides $s_{i}$, vertices $P_{i}$ for $1 \leq i \leq n$, and center $P_{0}$.
+		Let $T_{i} = \triangle P_{i}P_{i+1}P_{0}$, for $1 \leq i \leq n - 1$ and $T_{n} = \triangle P_{n}P_{1}P_{0}$.
+		We'll refer to $T_{i}$ as an \textbf{interior triangle} of $P$.
+		The bases of $T_{i}$ are the sides of $P$, i.e. $P_{i}P_{i+1} = s_{i}$, let the heights of these triangles be $h_{i}$, and the radius of $P$ is $P_{0}P_{i} = r$
+		Recall $\A(T_{i}) = \tfrac{1}{2}s_{i}h_{i}$.
+		Then by Axiom 2, we have that $\A(T_{1}) + \cdots + \A(T_{n}) = \A(P)$, it follows that $\A(P) = n\left( \tfrac{1}{2}s_{i}h_{i} \right)$.
+		Let $Q$ be a regular $n$-gon with sides $\sigma_{i} \neq s_{i}$, with interior triangles $V_{i}$ defined as $T_{i}$ were defined for $P$, where the heights of $V_{i}$ is $\eta_{i}$, and radius $Q_{0}Q_{i} = \rho$.
+		As with $P$, we can say $\A(Q) = n(\tfrac{1}{2} \sigma_{i}\eta_{i})$.
+
+		Since $P$ and $Q$ are both regular $n$-gons, they are similar, thus, the ratios of their corresponding sides are proportional, this implies that each of their corresponding interior triangles are similar to one another as well, thus the ratios between their respective heights are proportional.
+		Thus, $$\frac{h_{i}}{\eta_{i}} = \frac{s_{i}}{\sigma_{i}}.$$
+		Now we get to the finish, and show that the ratio between $\A(P)$ and $\A(V_{i})$ is equal to the ratio between $s_{i}^{2}$ and $\sigma_{i}^{2}$:
+			\begin{align*}
+			\frac{\A(P)}{\A(Q)} &= \frac{n \cdot \tfrac{1}{2}s_{i}h_{i}}{n \cdot \tfrac{1}{2}\sigma_{i}\eta_{i}}, \\
+			&= \frac{s_{i} h_{i}}{\sigma_{i} \eta_{i}}, \\
+			&= \frac{s_{i}^{2}}{\sigma_{i}^{2}}.
+			\end{align*}
+		Thus, we have shown that the ratio between $\A(P)$ and $\A(V_{i})$ is equal to $s_{i}^{2}/\sigma_{i}^{2}$, but we can use similarity again, and conclude that $$\frac{\A(P)}{\A(Q)} = \frac{r_{i}^{2}}{\rho_{i}^{2}}.$$
 		\end{proof}
 
+		This sets us up for the big theorem, where instead of the polygons from the preceding lemma, we consider the ratio of the areas of circles, leading us to $\pi$.
+		We will show that the ratio between the area of a circle and the square of its radius is constant.
+		This is the Archimedean proof that uses his famous double \textit{reductio ad absurdum}.
+
 		\begin{thm}
-		If $C_{1}$ and $C_{2}$ are circles with area $\alpha_{1}$ and $\alpha_{2}$, respectively, then $$\frac{\A(C_{1})}{\A(C_{2})} = \frac{\alpha_{1}^{2}}{\alpha_{2}^{2}},$$ or, equivalently: $$\frac{\A(C_{1})}{\alpha_{1}^{2}} = \frac{\A(C_{2})}{\alpha_{2}^{2}}.$$
+		If $C_{1}$ and $C_{2}$ are circles with radii $r_{1}$ and $r_{2}$, respectively, then $$\frac{\A(C_{1})}{\A(C_{2})} = \frac{r_{1}^{2}}{r_{2}^{2}},$$ or, equivalently: $$\frac{\A(C_{1})}{r_{1}^{2}} = \frac{\A(C_{2})}{r_{2}^{2}}.$$
 		\end{thm}
 		\begin{proof}
 		\end{proof}
-
-		Method with perimeters.
 		% subsection approximation_of_pi (end)
 
 		\subsection{Quadrature of the Parabola}
@@ -473,14 +470,47 @@
 
 	\section{Descendants}
 	\label{sec:descendants}
+	In c. 212 BC, during a Roman siege on the walled city of Syracuse, Archimedes was slain in the street by a Roman footsoldier.
+	With Archimedes' death (and the rise of the Roman empire) came the virtual end of Western advances in mathematics until the Italian algebraists of the 16th century.\textbf{[3]}
+	Across the globe, it was not until Fermat, Newton, and Leibniz in the 16th and 17th centuries that mathematicians returned to the subject of the infinitely-small and the infinitely-large as serious concepts worth studying.
+	The basic concept of the integral, that of inscribing infinitely many rectangles into a figure as a way of approximating its area, was developed by mathematicians who had closely studied Euclid, Archimedes, and everything Ancient Greek.
+	Its plain to see the influence of Archimedes' basic methods in the works of future mathematicians.
+	But the general idea for the integral is far from where Archimedes' influence stops.
+
 		\subsection{The Archimedean Property}
 		\label{sub:the_archimedean_property}
+		Also from the field of Analysis, we have the Archimedean Property of the Real Numbers, from \textbf{[1]} we have the following statement of this property.
+		The proof for this theorem relies on topological properties of $\R$, and is outside the scope of this paper, so it is omitted.
+		\begin{thm}[Archimedean Property]
+		\
+			\begin{enumerate}
+				\item Given any number $x \in \R$, there exists an $n \in \N$ satisfying $n > x$.
+				\item Given any real number $y > 0$, there exists an $n \in \N$ satisfying $1/n < y$.
+			\end{enumerate}
+		\end{thm}
+		
+		What this property states is that there is no largest natural number, i.e., the natural numbers are not bounded above; and that there is no smallest real number, i.e., if you give me a number, I can always find another number smaller than yours.
+		While Archimedes never concerned himself with the completeness of the real numbers, when studying $\R$ we find echoes of Archimedes' \textit{Method}, centuries after it was created.
+		And this is not simply a property of the reals that we show only because of its ties to historical mathematical topics, even though it has no real applicable value.
+		The Archimedean Property is invoked frequently in proofs related to the convergence of sequences and series, and limits of sequences and functions.\textbf{[1]}
 		% subsection the_archimedean_property (end)
 
 		\subsection{Methods of Numerical Integration}
 		\label{sub:methods_of_numerical_integration}
+		If we look to the field of Numerical Analysis, we find echoes of Archimedes' strategy to estimate area with inscribing polygons by \textit{The Method}.
+		In the first weeks of a course on integral calculus, students learn that certain integrals, such as $\int e^{-x^{2}} \, dx$ are impossible to compute by anti-derivatives a.k.a., by hand.
+		That is where Numerical Integration steps in with tools that bear a striking resemblence to Archimedes' strategy of estimating area by inscribing knowable shapes into unknowable shapes; they are the Trapezoidal Rule, and Simpson's Rule.
+		The fact that we have these methods is particularly important, given their ability to evaluate tables of transformations of $\int e^{-x^{2}} \, dx$, given its importance in the field of proability theory.
+
+		The Trapezoidal Rule allows a mathematician to inscribe the curve of a given integrand with trapezoids of uniform base length, so as to approximate the area under the curve over a given interval.
+		Simpson's Rule goes a step further by inscribing a curve with uniformly spaces parabolas with negative curvature in order to approximate the definite integral of the curve.
+		Both of these methods are modern flavors of Archimedes' original idea.\textbf{[4]}
 		% subsection methods_of_numerical_integration (end)
 	% section descendants (end)
+
+	\section{Conclusion}
+	\label{sec:conclusion}
+	% section conclusion (end)
 	\newpage
 
 	\appendix
@@ -489,150 +519,12 @@
 	\label{sec:references}
 	\begin{enumerate}
 		\item Abbott, Stephen; \textit{Understanding Analysis}, 2nd edition
+		\item Archimedes; \textit{The Works of Archimedes}
 		\item Beckmann, Petr; \textit{A History of $\pi$}
+		\item Cheney, Ward \& Kincaid, David; \textit{Numerical Mathematics and Computing}, 6th edition
 		\item Dunham, William; \textit{Journey Through Genius}
 		\item Edwards Jr., C.H.; \textit{The Historical Development of the Calculus}
 		\item Euclid; \textit{The Elements}
 	\end{enumerate}
 	% section references (end)
-	\newpage
-
-	\section{Euclid's Axioms \& Definitions}
-	\label{sec:euclid_s_axioms_&_definitions}
-	The following are the definitions, postulates, and common notions with which Euclid composed \textit{The Elements}.
-
-		\begin{defn}
-		A \textbf{point} is that which has no part.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{line} is breadthless length.
-		\end{defn}
-
-		\begin{defn}
-		The extremities of a line are points.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{straight line} is a line which lies evenly with the points on itself.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{surface} is that which has length and breadth only.
-		\end{defn}
-
-		\begin{defn}
-		The extremities of a surface are lines.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{plane surface} is a surface which lies evenly with the straight lines on itself.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{plane angle} is the inclination to one another of two lines in a plane which meet one another and do not lie in a straight line.
-		\end{defn}
-
-		\begin{defn}
-		And when the lines containing the angle are straight, the angle is called \textbf{rectilineal}.
-		\end{defn}
-
-		\begin{defn}
-		When a straight line set up up on a straight line makes the adjacent angles equal to one another, each of the equal angles is \textbf{right}, and the straight line standing on the other is called \textbf{perpendicular} to that on which it stands.
-		\end{defn}
-
-		\begin{defn}
-		An \textbf{obtuse angle} is an angle greater than a right angle.
-		\end{defn}
-
-		\begin{defn}
-		An \textbf{acute angle} is an angle less than a right angle.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{boundary} is that which is an extremity of anything.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{figure} is that which is contained by any boundary or boundaries.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{circle} is a plane figure contained by one line such that all the straight lines falling upon it from one point among those lying within the figure are equal to one another.
-		\end{defn}
-
-		\begin{defn}
-		And the point is called the \textbf{center} of the circle.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{diameter} of the circle is any straight line drawn through the center and terminated in both directions by the circumference of the circle, and such a straight line also bisects the circle.
-		\end{defn}
-
-		\begin{defn}
-		A \textbf{semicircle} is the figure contained by the diameter and the circumference cut off by it.
-		And the center of the semicircle is the same as that of the circle.
-		\end{defn}
-
-		\begin{defn}
-		\textbf{Rectilineal figures} are those which are contained by straight lines, \textbf{trilateral} figures being those contained by three, \textbf{quadrilateral} those contained by four, and \textbf{multilateral} those contained by more than four straight lines.
-		\end{defn}
-
-		\begin{defn}
-		Of trilateral figures, an \textbf{equilateral triangle} is that which has three sides equal, and \textbf{isoceles triangle} that which has two sides alone equal, and a \textbf{scalene triangle} that which has its three sides unequal.
-		\end{defn}
-
-		\begin{defn}
-		Further, of trilateral figures, a \textbf{right-angled triangle} is that which has a right angle, an \textbf{obtuse-angled triangle} is that which has an obtuse angle, and an \textbf{acute-angled triangle} that which has its three angles acute.
-		\end{defn}
-
-		\begin{defn}
-		Of quadrilateral figures, a \textbf{square} is that which is both equilateral and right-angled; an \textbf{oblong} that which is right-angled but not equilateral; a \textbf{rhombus} that which is equilateral but not right-angled; and a \textbf{rhomboid} that which has its opposite sides and equal to one another but is neither equilateral nor right-angled.
-		And let quadrilaterals other than these be called \textbf{trapezia}.
-		\end{defn}
-
-		\begin{defn}
-		\textbf{Parallel} straight lines are straight lines which, being in the same plane and being produced infinitely in both directions, do not meet one another in either direction.
-		\end{defn}
-
-		\begin{axe}
-		To draw a straight line from any point to any point.
-		\end{axe}
-
-		\begin{axe}
-		To produce a finite straight line continuously in a straight line.
-		\end{axe}
-
-		\begin{axe}
-		To describe a circle with any center and distance.
-		\end{axe}
-
-		\begin{axe}
-		That all right angles are equal to one another.
-		\end{axe}
-
-		\begin{axe}[The Parallel Postulate]
-		That, if a straight line falling on two straight lines make the interior angles on the same side less than two right angles, the two straight lines, if produced infinitely, meet on that side on which are the angles less than the two right angles.
-		\end{axe}
-
-		\begin{axe}[Euclid's 1st Common Notion]
-		Things which are equal to the same thing are also equal to one another.
-		\end{axe}
-
-		\begin{axe}[Euclid's 2nd Common Notion]
-		If equals be added to equals, the whole are equal.
-		\end{axe}
-
-		\begin{axe}[Euclid's 3rd Common Notion]
-		If equals be subtracted from equals, the remainders are equal.
-		\end{axe}
-
-		\begin{axe}[Euclid's 4th Common Notion]
-		Things which coincide with one another are equal to one another.
-		\end{axe}
-
-		\begin{axe}[Euclid's 5th Common Notion]
-		The whole is greater than the part.
-		\end{axe}
-	% section euclid_s_axioms_&_definitions (end)
 \end{document}
