@@ -2,443 +2,312 @@
 \documentclass[letterpaper, 12pt]{amsart}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%% boilerplate packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\usepackage{amsmath,amssymb,amsthm}
-	\usepackage[mathscr]{euscript}
-	\usepackage{enumerate}
-	\usepackage{graphicx}
-	\usepackage{mathrsfs}
-	\usepackage{color}
-	\usepackage{hyperref}
-	\usepackage{verbatim}
-	\usepackage{stmaryrd}
-	\usepackage[margin=1.25in]{geometry}
-
-	\raggedbottom
+		\usepackage[margin=1.5in]{geometry}
+		\usepackage{amsmath,amssymb,amsthm}
+		\usepackage{marvosym}
+		\usepackage[mathscr]{euscript}
+		\usepackage{enumerate}
+		\usepackage{graphicx}
+		\usepackage{mathrsfs}
+		\usepackage{color}
+		\usepackage{hyperref}
+		\usepackage{verbatim}
+		\usepackage{stmaryrd}
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%% rename the abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% \renewcommand{\abstractname}{Introduction}
+		% \renewcommand{\abstractname}{Introduction}
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% sets %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%% sets 
-		\DeclareMathOperator{\N}{\mathbb{N}}
-		\DeclareMathOperator{\Z}{\mathbb{Z}}
-		\DeclareMathOperator{\Zp}{\mathbb{Z}^{+}}
-		\DeclareMathOperator{\Q}{\mathbb{Q}}
-		\DeclareMathOperator{\Qp}{\mathbb{Q}^{+}}
-		\DeclareMathOperator{\Qc}{\mathbb{Q}^{c}}
-		\DeclareMathOperator{\R}{\mathbb{R}}
-		\DeclareMathOperator{\F}{\mathbb{F}}
-		\DeclareMathOperator{\Rp}{\mathbb{R}^{+}}
-		\DeclareMathOperator{\C}{\mathbb{C}}
-		\DeclareMathOperator{\Cnon}{\mathbb{C}^{\times}}
-		%% powerset of a set
-		\DeclareMathOperator{\pset}{\mathcal{P}}
-		%% set of continuous functions in a certain variable
-		\DeclareMathOperator{\cont}{\mathscr{C}}
-		%% set of functions in a certain variable
-		\DeclareMathOperator{\func}{\mathscr{F}}
-		
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% linear algebra %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%% linear span
-		\DeclareMathOperator{\Ell}{\mathscr{L}}
-		%% bold vectors with arrows, and bold matrices
-		\newcommand{\bmat}[1]{{\mathbf{#1}}}
-		\newcommand{\bvec}[1]{{\vec{\mathbf{#1}}}}
-		%% independent vectors/matrices
-		\DeclareMathOperator{\ind}{\perp\!\!\!\perp}
-		%% order
-		\DeclareMathOperator{\ord}{\text{ord}}
+		\DeclareMathOperator{\N}{\mathbb{N}}				% natural numbers
+		\DeclareMathOperator{\Z}{\mathbb{Z}}				% integers
+		\DeclareMathOperator{\Zp}{\mathbb{Z}^{+}}			% positive integers
+		\DeclareMathOperator{\Q}{\mathbb{Q}}				% rationals
+		\DeclareMathOperator{\Qc}{\mathbb{Q}^{c}}			% irrationals
+		\DeclareMathOperator{\R}{\mathbb{R}}				% reals
+		\DeclareMathOperator{\F}{\mathbb{F}}				% a field
+		\DeclareMathOperator{\C}{\mathbb{C}}				% complex numbers
+		\DeclareMathOperator{\Cnon}{\mathbb{C}^{\times}}	% nonzero complex numbers
+		\DeclareMathOperator{\Pcal}{\mathcal{P}}			% powerset, or set of polynomials
+		\DeclareMathOperator{\Ell}{\mathscr{L}}				% set of linear maps, or linear operator
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%% probability & statistics %%%%%%%%%%%%%%%%%%%%%%%%%
-		%% probability, expectation, variance, etc.
-		\renewcommand{\Pr}{\mathbb{P}}
-		\DeclareMathOperator{\E}{\mathbb{E}}
-		\DeclareMathOperator{\var}{\rm Var}
-		\DeclareMathOperator{\sd}{\rm SD}
-		\DeclareMathOperator{\cov}{\rm Cov}
-		\DeclareMathOperator{\SE}{\rm SE}
-		\DeclareMathOperator{\ssreg}{{\rm SS}_{{\rm Reg}}}
-		\DeclareMathOperator{\ssr}{{\rm SS}_{{\rm Res}}}
-		\DeclareMathOperator{\sst}{{\rm SS}_{{\rm Tot}}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% use pretty letters %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\DeclareMathOperator{\ep}{\varepsilon}				% epsilons
+		\DeclareMathOperator{\ph}{\varphi}					% phis
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% congruences %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% algebra %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\null}{\text{null }}					% null space
+		\DeclareMathOperator{\range}{\text{range }}			% range
+		\newcommand{\bmat}[1]{{\mathbf{#1}}}				% bold matrix
+		\newcommand{\bvec}[1]{{\vec{\mathbf{#1}}}}			% bold vector
+		\DeclareMathOperator{\ind}{\perp\!\!\!\perp}		% perpendicular, orthogonal
+		\DeclareMathOperator{\ord}{\text{ord}}				% order of a structure
+		\DeclareMathOperator{\Log}{Log}						% logarithm
+		\DeclareMathOperator{\Span}{Span}					% span
+		\newcommand{\pid}[1]{\langle #1 \rangle}			% bracket notation, used for 
+															% ideals or inner products
+		\newcommand{\norm}[1]{\mid \!\!#1 \!\!\mid}			%\norm{x} gives |x|
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% bracket notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		% I first used this for principal ideals, that is why the abbreviation is pid
-		\newcommand{\pid}[1]{\langle #1 \rangle}
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% fatdot notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% fatdot notation
 		\makeatletter
 			\newcommand*\fatdot{\mathpalette\fatdot@{.5}}
 			\newcommand*\fatdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
 		\makeatother
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% use pretty letters %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\DeclareMathOperator{\ep}{\varepsilon}
-		\DeclareMathOperator{\ph}{\varphi}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%% probability & statistics %%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\Pr}{\mathbb{P}}						% probability
+		\DeclareMathOperator{\E}{\mathbb{E}}				% expectation
+		\DeclareMathOperator{\var}{\rm Var}					% variance
+		\DeclareMathOperator{\sd}{\rm SD}					% standard deviation
+		\DeclareMathOperator{\cov}{\rm Cov}					% covariance
+		\DeclareMathOperator{\SE}{\rm SE}					% standard error
+		\DeclareMathOperator{\ssreg}{{\rm SS}_{{\rm Reg}}}	% sum of squared regression
+		\DeclareMathOperator{\ssr}{{\rm SS}_{{\rm Res}}}	% sum of squared residuals
+		\DeclareMathOperator{\sst}{{\rm SS}_{{\rm Tot}}}	% total sum of squares
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%% stolen from Jeske/Dugger %%%%%%%%%%%%%%%%%%%%%%%%%
-	% Some theorem-like environments, all numbered together starting at 1
-	% in each section.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% number theory %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}		% congruences
 
-	% The default \theoremstyle is bold headings and italic body text.
-	\newtheorem{thm}{Theorem}[section]
-	\newtheorem{defn}[thm]{Definition}
-	\newtheorem{prop}[thm]{Proposition}
-	\newtheorem{claim}[thm]{Claim}
-	\newtheorem{cor}[thm]{Corollary}
-	\newtheorem{lemma}[thm]{Lemma}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%% theorem environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% Some theorem-like environments, all numbered together starting at 1
+		% in each section.
 
-	\theoremstyle{definition}  % Bold headings and Roman body text.
-	\newtheorem{example}[thm]{Example}
-	\newtheorem{examples}[thm]{Examples}
-	\newtheorem{exercise}[thm]{Exercise}
-	\newtheorem{note}[thm]{Note}
-	\newtheorem{remark}[thm]{Remark}
-	\newtheorem{remarks}[thm]{Remarks}
-	\newtheorem{discussion}[thm]{Discussion}
+		\newtheorem{thm}{Theorem}[section]					% The default \theoremstyle is 
+		\newtheorem{defn}[thm]{Definition}					% bold headings and italic body text.
+		\newtheorem{prop}[thm]{Proposition}
+		\newtheorem{claim}[thm]{Claim}
+		\newtheorem{cor}[thm]{Corollary}
+		\newtheorem{lemma}[thm]{Lemma}
 
-	\newcommand{\dfn}{\textbf} % Make defined words bold.
-	\newcommand{\mdfn}[1]{\dfn{\mathversion{bold}#1}} % Even make math symbols bold
+		\theoremstyle{definition}  							% Bold headings and Roman body text.
+		\newtheorem{example}[thm]{Example}
+		\newtheorem{examples}[thm]{Examples}
+		\newtheorem{exercise}[thm]{Exercise}
+		\newtheorem{note}[thm]{Note}
+		\newtheorem{remark}[thm]{Remark}
+		\newtheorem{remarks}[thm]{Remarks}
+		\newtheorem{discussion}[thm]{Discussion}
 
-	% Various commands that are useful.  Please add your own.
+		\newcommand{\dfn}{\textbf} 							% Make defined words bold.
+		\newcommand{\mdfn}[1]{\dfn{\mathversion{bold}#1}} 	% Even make math symbols bold
 
-	\DeclareMathOperator{\Arg}{Arg}
-	\DeclareMathOperator{\re}{Re}
-	\DeclareMathOperator{\im}{Im}
-	\DeclareMathOperator{\Log}{Log}
-	\DeclareMathOperator{\Span}{Span}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% complex numbers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\DeclareMathOperator{\Arg}{Arg}						% argument of z \in \C
+		\DeclareMathOperator{\re}{Re}						% real component
+		\DeclareMathOperator{\im}{Im}						% imaginary component
 
-	\newcommand{\iso}{\cong}						% isometric/congruent
-	\newcommand{\ra}{\rightarrow}                   % right arrow
-	\newcommand{\Ra}{\Rightarrow}                   % right implies
-	\newcommand{\lra}{\longrightarrow}              % long right arrow
-	\newcommand{\la}{\leftarrow}                    % left arrow
-	\newcommand{\La}{\Leftarrow}                    % left implies
-	\newcommand{\lla}{\longleftarrow}               % long left arrow
-	\newcommand{\llra}[1]{\stackrel{#1}{\lra}}      % labeled long right arrow
-	\newcommand{\we}{\llra{\sim}}                   % weak equivalence
-	\newcommand{\cof}{\rightarrowtail}              % cofibration
-	\newcommand{\fib}{\twoheadrightarrow}           % fibration
-	\newcommand{\inc}{\hookrightarrow}              % inclusion
-	\newcommand{\dbra}{\rightrightarrows}           % double arrow for equalizer diagrams
-	\newcommand{\eqra}{\llra{\sim}}                 % equivalence/isomorphism
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% various symbols %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\newcommand{\iso}{\cong}						% isometric/congruent
+		\newcommand{\ra}{\rightarrow}                   % right arrow
+		\newcommand{\Ra}{\Rightarrow}                   % right implies
+		\newcommand{\lra}{\longrightarrow}              % long right arrow
+		\newcommand{\la}{\leftarrow}                    % left arrow
+		\newcommand{\La}{\Leftarrow}                    % left implies
+		\newcommand{\lla}{\longleftarrow}               % long left arrow
+		\newcommand{\eqra}{\llra{\sim}}                 % equivalence/isomorphism
+		\newcommand{\blank}{\underbar{\ \ }}          	% An underscore, as in (__)xV
+		% \newcommand{\blank}{-}                          % A hyphen, as in (-)xV
+		\newcommand{\Id}{Id}                            % The identity functor
+		\newcommand{\und}{\underline}
+		\newcommand{\del}{\nabla}						% gradient vector
 
-	% \newcommand{\blank}{\underbar{\ \ }}          % An underscore, as in (__)xV
-	\newcommand{\blank}{-}                          % A hyphen, as in (-)xV
-	\newcommand{\Id}{Id}                            % The identity functor
-	\newcommand{\und}{\underline}
-	\newcommand{\norm}[1]{\mid \!\!#1 \!\!\mid}             %\norm{x} gives |x|
-
-	% These commands are for the period and comma in the lower right entry of
-	% a diagram.  They put the punctuation 2 pts to the right, but make
-	% TeX (and hence the diagram package) unaware of the extra width
-	% of that entry.
-	\newcommand{\period}    {{\makebox[0pt][l]{\hspace{2pt} .}}}
-	\newcommand{\comma}     {{\makebox[0pt][l]{\hspace{2pt} ,}}}
-	\newcommand{\semicolon} {{\makebox[0pt][l]{\hspace{2pt} ;}}}
-
-	\newcommand{\Cech}{\v{C}ech}
-	\newcommand{\scat}{\Delta}
-	\newcommand{\assign}{\ra}
-	\newcommand{\copr}{\,\amalg\,}
-	\newcommand{\ovcat}{\downarrow}
-	\newcommand{\pder}[2]{{\frac{\partial #1}{\partial #2}}}
-	\newcommand{\del}{\nabla}
-	\newcommand{\vectr}[1]{{\mbox{\boldmath $#1$}}}
-	\newcommand{\uvectr}[1]{\vectr{\hat #1}}
-	\newcommand{\ihat}{\uvectr \imath}
-	\newcommand{\jhat}{\uvectr \jmath}
-	\newcommand{\khat}{\uvectr k}
-	\newcommand{\rhat}{\uvectr r}
-	\newcommand{\thhat}{\uvectr \theta}
-	\newcommand{\zhat}{\uvectr z}
-	\newcommand{\rhohat}{\uvectr \rho}
-	\newcommand{\phihat}{\uvectr \phi}
-	\newcommand{\grad}{\vectr{\vec\nabla}}
-	% \newcommand{\R}{\mathbb{R}}
-	\newcommand{\vv}[1]{\vectr{v_{#1}}}
-	\newcommand{\crad}{0.1}
-	\newcommand{\lline}[1]{\overleftrightarrow{#1}}
-	\DeclareMathOperator{\area}{area}
-	\DeclareMathOperator{\vol}{vol}
-	\newcommand{\ray}[1]{\overset{\rightarrow}{#1}}
-	\newcommand{\sr}[2]{???}
-	\newcommand{\iihat}{i}
-	\newcommand{\jjhat}{j}
-	\newcommand{\kkhat}{k}
-
-	\renewcommand{\abstractname}{Comment}		
+		\raggedbottom	
 \begin{document}
-	\title{Homework 4  -- Math 397 \\ \today}
+	\title{Homework 5  -- Math 397 \\ \today}
 	\author{Alex Thies \\ \href{mailto:athies@uoregon.edu}{\lowercase{athies$@$uoregon.edu}}}
 
 	\maketitle
 
-	\section*{Problem 2}
-	This problem concerns ellipses, which are the solutions sets of equations of the form $$\frac{x^{2}}{a^{2}} + \frac{y^{2}}{b^{2}} = 1$$ where $a, b > 0$. 
-	Assume $b \leq a$. 
-	The eccentricity of the ellipse is defined by the formula $e = \sqrt{1 - (b/a)^{2}}$ and this always lies in $[0, 1)$. 
-	The eccentricity of a circle is $0$, and when $e$ is close to $1$ the ellipses are long and thin.
-
+	\section*{Exercise 1}
 		\subsection*{Part (a)}
-		The points $F_{1} = (-ae, 0)$ and $F_{2} = (ae, 0)$ are called the \textbf{foci} of the ellipse. 
-		Show that the distance $QF_{2}$ in the picture below is equal to $a$:
-		\begin{figure}[h]
-			\includegraphics[width=0.5\textwidth]{images/ellipse.png}
-			% \caption{An Ellipse}
-			\label{ellipse}
-		\end{figure}
+		Use Sage to plot the polar-coordinate equaton $r = \tfrac{1}{3-\cos\theta}$. 
+		Then plot the similar $r = \tfrac{1}{3-\lambda\cos\theta}$ equations for various values of $\lambda$ stretching from 1 to 7. 
+		What happens to the graph? 
+		What value of $\lambda$ produces an ellipse that stretches all the way out to $x = 100$?
 
 		\begin{proof}[Solution]
-		We compute the following:
-			\begin{align*}
-				d(Q,F_2) &= \sqrt{(ae - 0)^2 + (0 - b)^2}, \\
-	            &= \sqrt{(ae)^2 + b^2}, \\
-	            &= \sqrt{a^2 \left(1 - \tfrac{b^2}{a^2} \right) + b^2}, \\
-	            &= \sqrt{a^2 - b^2 + b^2}, \\
-	            &= \sqrt{a^2}, \\
-	            &= |a|, \\
-				&= a.
-			\end{align*}
-									
 		\end{proof}
 		% subsection part_a (end)
 
 		\subsection*{Part (b)}
-		Show that for points $P$ on the ellipse the distance $F_{1}P +PF_{2}$ is always equal to $2a$.
-		[Hint: Let $P = (x, y)$. 
-		Write down a formula for the total distance function $d(x, y) = d(P, F_{1}) + d(P, F_{2})$ in terms of $x, y, a, b$, and $e$. 
-		Use the equation for the ellipse to eliminate all $y$ variables, and then use $a^{2}e^{2} = a^{2} − b^{2}$ to eliminate $b$. 
-		The algebra is a little involved, but not terrible.]
+		Now do the algebra that explains what is happening in part (a). 
+		Start with $r = \tfrac{1}{3-\lambda\cos\theta}$ and rewrite that as $$1 = r(3-\lambda\cos\theta).$$
+		Change to Cartesian coordinates using $r = \sqrt{x^2 + y^2}$ and $r \cos\theta = x$. 
+		Do some algebra, get rid of square roots, and rearrange until you get a quadric equation. 
+		What values of $\lambda$ give the different types of conics? 
+		The review of quadric equations below might be helpful.\footnote{Appendix \ref{sec:review_of_quadric_equations}}
 
 		\begin{proof}[Solution]
-		First let's make some tools for substitution.
-		Solving the ellipse for $y$ yields $y^2 = b^2 - \tfrac{b^2}{a^2}x^{2}$; playing with the formula for eccentricity yields $a^2e^2 = a^2 - b^2$, further algebraic manipulation gives us $a^2e^2 = x^2 - x^2e^2$.
-			We compute the following:
-				\begin{align*}
-				d(x,y) &= d(F_1,P) + d(P,F_2), \\
-	            &= \sqrt{(x + ae)^2 + y^2} + \sqrt{(ae - x)^2 + (-y)^2}, \\
-	            &= \sqrt{(x + ae)^2 + y^2} + \sqrt{(ae - x)^2 + y^2}, \\
-				&= \sqrt{(x + ae)^2 + b^2 - \tfrac{b^2}{a^2}x^2} + \sqrt{(ae - x)^2 + b^2 - \tfrac{b^2}{a^2}x^{2}}, \\
-				&= \sqrt{(x + ae)^2 + b^2 - \tfrac{b^2x^2}{a^2}} + \sqrt{(ae - x)^2 + b^2 - \tfrac{b^2x^2}{a^2}}, \\
-	            &= \sqrt{(x + ae)^2 + a^2 - a^2e^2 - (x^2 - x^2e^2)} + \sqrt{(ae - x)^2 + a^2 - a^2e^2 - (x^2 - x^2e^2)}, \\
-	            &= \sqrt{2xae + a^2 + x^2e^2} + \sqrt{a^2 + x^2e^2}, \\
-	            &= \sqrt{(a + xe)^2} + \sqrt{(a - xe)^2}, \\
-	            &= a + xe + a - xe, \\
-	            &= 2a.
-				\end{align*}
-				
 		\end{proof}
 		% subsection part_b (end)
 
 		\subsection*{Part (c)}
-		For convenience just make $a = 1$ now. 
-		Use Sage to draw a graph showing the circle of radius 1 and the ellipse with $a = 1$ and eccentricity $e = 0.75$, in different colors on the same graph. 
-		(Hint: Implicit-Plot command, introduced on the last homework). 
-		Include a picture of the graph as your solution for this part.
+		Show that an ellipse $Ax^2 + By^2 = C$ has eccentricity $\sqrt{1 - \tfrac{B}{A}}$ if $B \leq A$ (or alternatively, $\sqrt{1 - \tfrac{A}{B}}$ when $A \leq B$).
 
 		\begin{proof}[Solution]
-		See Figure \ref{circle1} for the unit circle and ellipse with eccentricity $e = 0.75$.
 		\end{proof}
 		% subsection part_c (end)
 
 		\subsection*{Part (d)}
-		Now vary the eccentricity and observe how the ellipse changes. 
-		What is the smallest eccentricity where you can see a visible difference between the circle and ellipse? 
-		Give one or two decimal places, and don’t feel like you have to find the \textit{absolute} smallest eccentricity -- an approximate answer is fine. 
-		(You should choose an appropriate scale for this problem; if your circle and ellipse are a dot on the page you are not going to see anything).
+		Using your work in (b), derive a formula for the eccentricity of the ellipse $r = \tfrac{1}{3-\lambda\cos\theta}$ in terms of $\lambda$.
 
 		\begin{proof}[Solution]
-			See Figure \ref{circle2} for the unit circle and ellipse with small eccentricity, $e = 0.12$.
-			I plotted the circle, and an ellipse with eccentricity $e = 0$, and varied $e$ slightly until I could notice the slightest difference.
 		\end{proof}
 		% subsection part_d (end)
 
 		\subsection*{Part (e)}
-		Look up the eccentricities for the orbits of the planets, as well as Halley’s Comet. 
-		Which orbits are you comfortable describing as ``nearly circular''?
+		Thinking about all the above parts, fill in the blanks for the following ``morals'' (statements that are not technically true but nevertheless have some interesting content to them):
+		$$ \text{an ellipse with eccentricity $e = 1$ is really a \, $\blank\blank\blank\blank\blank\blank\blank\blank\blank\blank$}$$
+		$$ \text{an ellipse with eccentricity $e > 1$ is really a \, $\blank\blank\blank\blank\blank\blank\blank\blank\blank\blank$}$$
 
 		\begin{proof}[Solution]
-			Observe Figure \ref{orbit} for the list of planetary eccentricities (looked up online), as well as for Halley's Comet.
-			Based on work from the previous section, we would say that only Mercury, Pluto, and Halley's Comet do not have nearly circular orbits.
+		\end{proof}
+		% subsection part_e (end)
+	% section exercise_1 (end)
 
-			\begin{figure}[h]
-				\begin{tabular}{c|c}
-					Celestial Body & Eccentricity \\
-					\hline
-					Mercury & 0.2488 \\
-					Venus & 0.0068 \\
-					Earth & 0.0167 \\
-					Mars & 0.0340 \\
-					Jupiter & 0.0484 \\
-					Saturn & 0.0541 \\
-					Neptune & 0.0086 \\
-					Uranus & 0.0472 \\
-					Pluto & 0.2488 \\
-					Halley's Comet & 0.9671
-				\end{tabular}
-				\caption{Orbital Eccentricities of Local System Objects}
-				\label{orbit}
-			\end{figure}
+	\section*{Exercise 2}
+	The Runge-Kutta order 4 method is, for the most part, extremely reliable. 
+	This problem will show you a place where you need to be careful, though.
+		\subsection*{Part (a)}
+		Solve the separable differential equation $y' = \tfrac{-x}{y}, \, y(0) = 2$ and show that the solution is $y(x) = \sqrt{4 - x^2}$. 
+		What will the graph look like?
+
+		\begin{proof}[Solution]
+		\end{proof}
+		% subsection part_a (end)
+
+		\subsection*{Part (b)}
+		Now try the Sage commands
+		$$\verb|P = desolve_rk4(-x,y,y,ivar=x,ics=[0,2],endpoints=10,step=0.5)|$$
+		$$\verb|points(P)|$$
+		You will see something kind of crazy, not looking very much like what you expected. 
+		Try changing the step size to 0.1; it is even crazier!
+
+		Focus on the region where you expect the function to be defined, and blow up the graph accordingly. 
+		Include the graph as your solution to this part. 
+		You might have to use the ``aspect ratio'' feature (see previous homeworks) to make the graph look right.
+
+		\begin{proof}[Solution]
+		\end{proof}
+		% subsection part_b (end)
+
+		\subsection*{Part (c)}
+		Numerical approximations to first-order differential equations use the slopes of the tangent lines to advance the solution from one point to the next. 
+		Keeping that in mind, what do you think is going wrong with this particular differential equation that is confusing Sage? 
+		Consider plotting the points on a slope field.
+
+		\begin{proof}[Solution]
+		\end{proof}
+		% subsection part_c (end)
+	% section exercise_2 (end)
+
+	\section*{Exercise 3}
+	This problem deals with a pendulum of length $\ell$. 
+	Deriving the differential equation for a pendulum is not too difficult.\footnote{Read about it in the Acheson chapter or in the pdf posted with assignment.}
+	It is $$\theta'' = -\tfrac{g}{\ell} \cdot \sin\theta,$$ which can be solved to find $\theta = A \sin(\omega t) + B \cos(\omega t)$ where $\omega = 􏰃g$. 
+	In this problem we will explore the differences between our approximate model and the true pendulum. 
+	For convenience, let’s just take $\ell = g$ so that $\omega = 1$. 
+	The mathematics is the same no matter what the constant $g$ is, so making it 1 doesn’t hurt as far as exploring the main ideas.
+	Also, one tends to think of a pendulum as a mass suspended from a string, but in this problem we will consider pendulums that go 360 degrees around. 
+	In this case, the pendulum forces the mass to always be a distance $\ell$ from the origin, and so it is better to mentally replace the string with a very light rod as this is a more accurate physical model.
+
+		\subsection*{Part (a)}
+		Solve the differential equation $\theta'' = -\theta$ with $\theta(0) = 0.5$ and $\theta'(0) = 0$.
+
+		\begin{proof}[Solution]
+		\end{proof}
+		% subsection part_a (end)
+
+		\subsection*{Part (b)}
+		Set z = θ′ so that for our “true pendulum” get the system of first-order equations $$\theta' = z, \hspace{5mm} z' = -\sin\theta$$
+		Use the initial conditions $\theta(0) = 0.5$ and $\theta'(0) = 0$ (so the pendulum is released from a resting position). 
+		The solution for our approximate model is $\theta(t) = 0.5 \cos(t)$. 
+		Use Sage to compute a numerical solution to the true pendulum, and plot it on the same graph as our approximate solution. 
+		Plot a time period of at least $[0, 20]$ so that you can see how the two solutions compare over time.\footnote{Note that you can use “theta” as a variable in Sage as long as you introduce it via the command var('theta').}
+		If you do this correctly, you should find that the true solution and our approximate solution are pretty close. Include the graph as your solution to this part.
+
+		\begin{proof}[Solution]
+		\end{proof}
+		% subsection part_b (end)
+
+		\subsection*{Part (c)}
+		Now change the initial condtions to $\theta(0) = 1$ and repeat. 
+		Compare the results to $\theta(0) = 2$ and $\theta(0) = 3$. 
+		Give a physical interpretation of how the true pendulum's motion when $\theta(0) = 3$ differs from our approximate model.
+
+		\begin{proof}
+			
+		\end{proof}
+		% subsection part_c (end)
+
+		\subsection*{Part (d)}
+		Try the initial condition $\theta(0) = 3.1415$. 
+		Then try $\theta(0) = \pi$ (using ``pi'' in Sage). 
+		Explain what is happening here.
+
+		\begin{proof}[Solution]
+		\end{proof}
+		% subsection part_d (end)
+
+		\subsection*{Part (e)}
+		Set the initial condition as $\theta(0) = 4.5$ and look at the resulting graph. 
+		Why is the sine wave shifted vertically up now?
+
+		\begin{proof}[Solution]
 		\end{proof}
 		% subsection part_e (end)
 
 		\subsection*{Part (f)}
-		Points on the ellipse $\tfrac{x^{2}}{a^{2}} + \tfrac{y^{2}}{b^{2}} = 1$ can be described by $(x,y) = (r \cos\theta,r\sin\theta)$ where $r = r(\theta)$ is a function of $\theta$. 
-		Plug into the equation of the ellipse, solve for $r$, and show that $$r = \frac{b}{\sqrt{1 - e^{2}\cos^{2}\theta}}.$$
-
-		This is the equation for the ellipse in polar coordinates.
+		Now let’s change the situation, so that the pendulum starts at the bottom $(\theta(0) = 0)$ but we give it an initial velocity $\theta'(0) = 1$. 
+		Compute the solution to $\theta'' = -\theta$ for this initial condition, and then plot the numerical model for the true pendulum on the same graph. 
+		Use a time interval of at least $[0, 40]$ here.
 
 		\begin{proof}[Solution]
-		We compute the following:
-			\begin{align*}
-				\frac{x^{2}}{a^{2}} + \frac{y^{2}}{b^{2}} &= 1, \\
-				\frac{b^{2}}{a^{2}}(r \cos\theta)^{2} + (r\sin\theta)^{2} &= b^{2}, \\
-				r^{2} \left( \frac{b^{2}}{a^{2}}\cos^{2}\theta + 1 - \cos^{2}\theta \right) &= b^{2}, \\
-				r^{2} &= \frac{b^{2}}{\left( \tfrac{b^{2}}{a^{2}}\cos^{2}\theta + 1 - \cos^{2}\theta \right)}, \\
-				&= \frac{b^{2}}{\left( 1 - \cos^{2}\theta + \tfrac{b^{2}}{a^{2}}\cos^{2}\theta \right)}, \\
-			\end{align*}
-			\begin{align*}
-				&= \frac{b^{2}}{1 - \left( 1 - \tfrac{b^{2}}{a^{2}} \right)\cos^{2}\theta}, \\
-				r &= \frac{b}{\sqrt{1 - e^{2}\cos^{2}\theta}}.
-			\end{align*}
-		Hence $r = \tfrac{b}{\sqrt{1 - e^{2}\cos^{2}\theta}}$, as we aimed to show.
 		\end{proof}
 		% subsection part_f (end)
 
 		\subsection*{Part (g)}
-		Sage can plot curves in polar coordinates. Try the command $$\verb|polar_plot(3/(1-0.7^2 * cos(s)^2)^(0.5),(s,0,2*pi))|$$ Then try the following modifications. 
-		You don’t have to include graphs on your HW, but write a brief description of what is happening in each one.
-			\begin{enumerate}[\hspace{5mm} (i)]
-				\item Remove the square from the cos(s).
-				\item Put the square back in, but change $\cos(s)$ to $\cos(7s)$.
-				\item Change $\cos(s)$ to $\cos(15 + s)$.
-				\item Change back to $\cos(s)$, but also change the $3$ in the numerator to $3s$.
-				\item Same as previous part, but change the interval to $(0, 16\pi)$.
-			\end{enumerate}
+		Repeat the previous part for $\theta'(0) = 2$. 
+		There is a big difference in the graphs this time. 
+		Explain physically what is happening with the true pendulum.
 
 		\begin{proof}[Solution]
-			See Figures \ref{figs1}, \ref{figs2}, and \ref{figs3} for the actual graphs.
-			In (i), removing the square from the cosine makes the plot less eccentric, and moves the center.
-			In (ii), returning the square and changing the argument makes the boundary of the circle change into a reflected cosine graph that has seven repititions over $0 \leq \theta \leq \pi$.
-			In (iii), changing the argument again removes the weird boundary stuff, reintroduces some eccentricity, and seems to rotate the figure about the origin.
-			In (iv) and (v), we get spirals with different rates.
 		\end{proof}
 		% subsection part_g (end)
-	% section problem_2 (end)
 
-	\begin{remark}
-		I have some rough/messy work for problem 3 that is hand-written, but I lost track of how much of this assignment I had TeX-ed, and so I didn't have time to type everything up.
-		I'm not including the rough work for two reasons: (1) its on my nightstand, and (2) I have a feeling it has several errors.
-	\end{remark}
+		\subsection*{Part (h)}
+		Now try $\theta'(0) = 2.01$. 
+		The graph should be very different now! 
+		Sage is not doing anything wrong, and this is the true physical solution. 
+		Explain what is happening here.
 
-	\section*{Problem 3}
-	The question concerns a spring-mass system with $m = k = 1$, so that the differential equation is $\ddot{x} + \gamma\dot{x} + x = 0$. 
-	Assume that $\gamma^{2} < 4$, so that we have oscillatory solutions, and take the initial values $x(0) = 1$ and $x'(0) = 0$.
+		\begin{proof}[Solution]
+		\end{proof}
+		% subsection part_h (end)
+	% section exercise_3 (end)
 
-		\subsection*{Part (a)}
-		Go through the steps of solving the differential equation and show that the solution has the form $$x(t) = e^{\frac{-\gamma}{2}t}\cdot\cos\left( \cos{(\omega t)} + \tfrac{\gamma}{2\omega}\cos{(\omega t)} \right)$$ where $\omega = \frac{\sqrt{4 - \gamma^{2}}}{2}$.
-		% subsection part_a (end)
+	\appendix
 
-		\subsection*{Part (b)}
-		Use Sage to plot the three solutions corresponding to $\gamma = 1$, $\gamma = 0.7$, and $\gamma = 0.5$ on one graph, in different colors.
-		% subsection part_b (end)
-
-		\subsection*{Part (c)}
-		Let’s say that in real life the mass is stopped once the fluctuations from the equilibrium position are less than 0.01. 
-		Use Sage to graphically estimate how long it takes for the mass to stop when $\gamma = 0.5$. 
-		Give your answer to one decimal place (so something like 12.3, not just 12). 
-		Explain (briefly) how you went about finding your answer.
-		% subsection part_c (end)
-
-		\subsection*{Part (d)}
-		This time imagine two of our spring-mass systems side-by-side, one with $\gamma = 0.5$ and one with $\gamma = 0.7$. 
-		These both have the same initial conditions of $x(0) = 1$ and $x'(0) = 0$, so in particular the masses are side-by-side at $t = 0$. 
-		What is the next time that they are again side-by-side? 
-		Use Sage to find out, giving your answer to 5 decimal places. 
-		[Hint: Don’t do this graphically. 
-		Have Sage solve an equation.]
-		% subsection part_d (end)
-
-		\subsection*{Part (e)}
-		Sage can solve differential equations on its own. 
-		Try the following commands:
-			\begin{enumerate}[]
-				\item \verb|f=function('f')(x)|
-
-				\item \verb|desolve(diff(f,x,2)+0.5*diff(f,x,1)+f==0,dvar=f,ivar=x,ics=[0,1,0])|
-
-				\item \verb|g=desolve(diff(f,x,2)+0.5*diff(f,x,1)+f==0,dvar=f,ivar=x,ics=[0,1,0])|
-
-				\item \verb|plot(g(x),(x,0,20))|
-			\end{enumerate}
-		Sage can even solve the differential equation with an unspecified constant in it. 
-		We will replace our $\gamma$ variable with `c' in Sage. 
-		Try this:
-			\begin{enumerate}[]
-				\item \verb|c=var('c')|
-
-				\item \verb|assume(c>0)|
-
-				\item \verb|assume(c<2)|
-
-				\item \verb|desolve(diff(f,x,2)+c*diff(f,x,1)+f==0,dvar=f,ivar=x,ics=[0,1,0])|
-
-				\item \verb|assume(c>2)|
-
-				\item \textbf{[The above command should have produced another error; think about why.]}
-
-				\item \verb|forget(c<2)|
-
-				\item \verb|assume(c>2)|
-
-				\item \verb|desolve(diff(f,x,2)+c*diff(f,x,1)+f==0,dvar=f,ivar=x,ics=[0,1,0])|
-			\end{enumerate}
-		% subsection part_e (end)
-	% section problem_3 (end)
-	\newpage
-
-	\section{Figures}
-	\label{sec:figures}
-		\begin{figure}[h]
-			\includegraphics[width=0.55\textwidth]{images/2c.png}
-			\caption{A unit circle, and an ellipse with $a=1$ and $e=0.75$.}
-			\label{circle1}
-		\end{figure}
-
-		\begin{figure}[h]
-			\includegraphics[width=0.55\textwidth]{images/2d.png}
-			\caption{A unit circle, and an ellipse with $a=1$ and $e=0.12$.}
-			\label{circle2}
-		\end{figure}
-
-		\begin{figure}[h]
-			\includegraphics[width=0.55\textwidth]{images/2g_1.png}
-			\caption{Steps 2.g.i - 2.g.iii}
-			\label{figs1}
-		\end{figure}
-
-		\begin{figure}[h]
-			\includegraphics[width=0.55\textwidth]{images/2g_2.png}
-			\caption{Step 2.g.iv}
-			\label{figs2}
-		\end{figure}
-
-		\begin{figure}[h]
-			\includegraphics[width=0.5\textwidth]{images/2g_3.png}
-			\caption{Step 2.g.v}
-			\label{figs3}
-		\end{figure}
-	% section figures (end)
+	\section{Review of Quadric Equations}
+	\label{sec:review_of_quadric_equations}
+	Brief review of quadric equations: 
+	Equations of the form $$Ax^2 + By^2 + Cx + D = 0$$ are conic sections, meaning that they give either ellipses, parabolas, or hyperbolas. 
+	You can even include $Exy$ and $Fy$ terms in the equation, but I have left them out for simplicity. 
+	To see what kind of conic section the equation gives, complete the square like this:
+	\begin{align*}
+	0 = Ax^2 + By^2 + Cx + D &= A \left( x^2 + \tfrac{C}{A}x \right) + By^2 + D, \\
+	&= A \left( x + \tfrac{C}{2A}x \right)^2 + By^2 + D - \tfrac{C^2}{4A^2}, \\
+	&= Au^2 + By^2 + E
+	\end{align*}
+	where $u = x + C$ and $E = D - \tfrac{C^2}{4A^2}$.
+	The final equation $0 = Au^2 + By^2 + E$ is recognizable to be an ellipse when $A$ and $B$ have the same sign, a parabola when one of $A$ and $B$ is zero, and a hyperbola when $A$ and $B$ have opposite signs.
+	% section review_of_quadric_equations (end)
 \end{document}
