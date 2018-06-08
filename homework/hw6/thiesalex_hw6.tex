@@ -1,0 +1,289 @@
+%!TEX output_directory = temp
+\documentclass[letterpaper, 12pt]{amsart}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%% boilerplate packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\usepackage[margin=2in]{geometry}
+		\usepackage{amsmath,amssymb,amsthm}
+		\usepackage{marvosym}
+		\usepackage[mathscr]{euscript}
+		\usepackage{enumerate}
+		\usepackage{graphicx}
+		\usepackage{mathrsfs}
+		\usepackage{color}
+		\usepackage{hyperref}
+		\usepackage{verbatim}
+		\usepackage{stmaryrd}
+		\usepackage{subfigure}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%% rename the abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% \renewcommand{\abstractname}{Introduction}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% sets %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\DeclareMathOperator{\N}{\mathbb{N}}				% natural numbers
+		\DeclareMathOperator{\Z}{\mathbb{Z}}				% integers
+		\DeclareMathOperator{\Zp}{\mathbb{Z}^{+}}			% positive integers
+		\DeclareMathOperator{\Q}{\mathbb{Q}}				% rationals
+		\DeclareMathOperator{\Qc}{\mathbb{Q}^{c}}			% irrationals
+		\DeclareMathOperator{\R}{\mathbb{R}}				% reals
+		\DeclareMathOperator{\F}{\mathbb{F}}				% a field
+		\DeclareMathOperator{\C}{\mathbb{C}}				% complex numbers
+		\DeclareMathOperator{\Cnon}{\mathbb{C}^{\times}}	% nonzero complex numbers
+		\DeclareMathOperator{\Pcal}{\mathcal{P}}			% powerset, or set of polynomials
+		\DeclareMathOperator{\Ell}{\mathscr{L}}				% set of linear maps, or linear operator
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% use pretty letters %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\DeclareMathOperator{\ep}{\varepsilon}				% epsilons
+		\DeclareMathOperator{\ph}{\varphi}					% phis
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% algebra %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\null}{\text{null }}					% null space
+		\DeclareMathOperator{\range}{\text{range }}			% range
+		\newcommand{\bmat}[1]{{\mathbf{#1}}}				% bold matrix
+		\newcommand{\bvec}[1]{{\vec{\mathbf{#1}}}}			% bold vector
+		\DeclareMathOperator{\ind}{\perp\!\!\!\perp}		% perpendicular, orthogonal
+		\DeclareMathOperator{\ord}{\text{ord}}				% order of a structure
+		\DeclareMathOperator{\Log}{Log}						% logarithm
+		\DeclareMathOperator{\Span}{Span}					% span
+		\newcommand{\pid}[1]{\langle #1 \rangle}			% bracket notation, used for 
+															% ideals or inner products
+		\newcommand{\norm}[1]{\mid \!\!#1 \!\!\mid}			%\norm{x} gives |x|
+
+		% fatdot notation
+		\makeatletter
+			\newcommand*\fatdot{\mathpalette\fatdot@{.5}}
+			\newcommand*\fatdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+		\makeatother
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%% probability & statistics %%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\Pr}{\mathbb{P}}						% probability
+		\DeclareMathOperator{\E}{\mathbb{E}}				% expectation
+		\DeclareMathOperator{\var}{\rm Var}					% variance
+		\DeclareMathOperator{\sd}{\rm SD}					% standard deviation
+		\DeclareMathOperator{\cov}{\rm Cov}					% covariance
+		\DeclareMathOperator{\SE}{\rm SE}					% standard error
+		\DeclareMathOperator{\ssreg}{{\rm SS}_{{\rm Reg}}}	% sum of squared regression
+		\DeclareMathOperator{\ssr}{{\rm SS}_{{\rm Res}}}	% sum of squared residuals
+		\DeclareMathOperator{\sst}{{\rm SS}_{{\rm Tot}}}	% total sum of squares
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% number theory %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}		% congruences
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%% theorem environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% Some theorem-like environments, all numbered together starting at 1
+		% in each section.
+
+		\newtheorem{thm}{Theorem}[section]					% The default \theoremstyle is 
+		\newtheorem{defn}[thm]{Definition}					% bold headings and italic body text.
+		\newtheorem{prop}[thm]{Proposition}
+		\newtheorem{claim}[thm]{Claim}
+		\newtheorem{cor}[thm]{Corollary}
+		\newtheorem{lemma}[thm]{Lemma}
+
+		\theoremstyle{definition}  							% Bold headings and Roman body text.
+		\newtheorem{example}[thm]{Example}
+		\newtheorem{examples}[thm]{Examples}
+		\newtheorem{exercise}[thm]{Exercise}
+		\newtheorem{note}[thm]{Note}
+		\newtheorem{remark}[thm]{Remark}
+		\newtheorem{remarks}[thm]{Remarks}
+		\newtheorem{discussion}[thm]{Discussion}
+
+		\newcommand{\dfn}{\textbf} 							% Make defined words bold.
+		\newcommand{\mdfn}[1]{\dfn{\mathversion{bold}#1}} 	% Even make math symbols bold
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% complex numbers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\DeclareMathOperator{\Arg}{Arg}						% argument of z \in \C
+		\DeclareMathOperator{\re}{Re}						% real component
+		\DeclareMathOperator{\im}{Im}						% imaginary component
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% various symbols %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\newcommand{\iso}{\cong}						% isometric/congruent
+		\newcommand{\ra}{\rightarrow}                   % right arrow
+		\newcommand{\Ra}{\Rightarrow}                   % right implies
+		\newcommand{\lra}{\longrightarrow}              % long right arrow
+		\newcommand{\la}{\leftarrow}                    % left arrow
+		\newcommand{\La}{\Leftarrow}                    % left implies
+		\newcommand{\lla}{\longleftarrow}               % long left arrow
+		\newcommand{\eqra}{\llra{\sim}}                 % equivalence/isomorphism
+		\newcommand{\blank}{\underbar{\ \ }}          	% An underscore, as in (__)xV
+		% \newcommand{\blank}{-}                          % A hyphen, as in (-)xV
+		\newcommand{\Id}{Id}                            % The identity functor
+		\newcommand{\und}{\underline}
+		\newcommand{\del}{\nabla}						% gradient vector
+
+		\raggedbottom	
+\begin{document}
+	\title{Homework 6  -- Math 397 \\ \today}
+	\author{Alex Thies \\ \href{mailto:athies@uoregon.edu}{\lowercase{athies$@$uoregon.edu}}}
+
+	\maketitle
+
+	\section*{Problem 1}
+	Use calculus of variations and the Euler-Lagrange equation to show that the shortest distance between two points is given by a curve which is the straight line between the two points.
+
+	\begin{proof}
+	Let $Y(x)$ be the family of curves from $x_{1}$ to $x_{2}$, suppose $y(x) \in Y$ such that $$J(y) = \int_{x_{1}}^{x_{2}} F[x,y,\dot{y}] \, dx$$ is minimal.
+	Recall that the integrand of $J$ is the functional $F[x,y,\dot{y}] = \sqrt{1 + (\dot{y})^2}$.
+	Further, we know that we can use the Euler-Lagrange Equation to optimize $J$ and (hopefully) find that $y(x)$ is linear.
+	The Euler-Lagrange Equation for this case is $$\frac{\partial F}{\partial y} - \frac{d}{dx} \frac{\partial F}{\partial \dot{y}} = 0.$$
+	We compute some derivatives.
+		\begin{align*}
+			\frac{\partial F}{\partial y}\left[ \sqrt{1 + (\dot{y})^2} \right] &= 0, \text{ and;} \\
+			\frac{\partial F}{\partial \dot{y}} \left[ \sqrt{1 + (\dot{y})^2} \right] &= \frac{\dot{y}}{\sqrt{1 + (\dot{y})^2}}.
+		\end{align*}
+	It follows that $$\frac{d}{dx}\left[ \frac{\dot{y}}{\sqrt{1 + (\dot{y})^2}} \right] = 0.$$
+	This implies that $\dot{y} = a$ for some constant $a$.
+	Integrating shows that $y(x) = ax + b$.
+	Hence, the curve $y$ that optimizes $J$ is a line $y(x) = ax + b$, as we aimed to show.
+	\end{proof}
+	% section problem_1 (end)
+	\vspace*{2mm}
+	\hrule
+	\vspace*{2mm}
+
+	\section*{Problem 2}
+	A classic problem: What closed curve of given length encloses the maximum area?
+	If you have a closed, non-self-intersecting curve $C$ that is traced out by a clockwise moving point in the time interval $0$ to $T$ and the parametric equations for the curve are $x = x(t)$ and $y = y(t)$, then $$\text{area enclosed by $C = \frac{1}{2}\int_{0}^{T} \left[ y(t)\frac{dx}{dt} - x(t)\frac{dy}{dt} \right] dt$.}$$
+	We want to find the curve $C$ that maximizes this integral given a fixed perimeter $$\int \, ds = \int_{0}^{T} \sqrt{\left( \frac{dx}{dt} \right)^{2} + \left( \frac{dy}{dt} \right)^{2}} \, dt.$$
+	Note that the integral want to optimize is a bit more complicated and we also have a constraint. 
+	The function inside is a function of five variables, $t, x, \dot{x}, y$, and $\dot{y}$, where $\dot{x} = dx/dt$ and $\dot{y} = dy/dt$, and we need to find the pair $x(t)$ and $y(t)$ that maximizes area. 
+	Through a process similar to what we saw in class, we can derive a pair of Euler-Lagrange equations that lead to the functions: $$\frac{\partial H}{\partial x} - \frac{d}{dt}\frac{\partial H}{\partial \dot{x}} = 0 \ \ \text{and} \ \ \frac{\partial H}{\partial y} - \frac{d}{dt}\frac{\partial H}{\partial \dot{y}} = 0.$$
+	The integrand from the area functional is $F = \tfrac{1}{2}(y\dot{x} - x\dot{y})$ and the integrand from the 2 perimeter constraint is $G = (\dot{x}^{2} + \dot{y}^{2})^{1/2}$. 
+	Similar to the catenary problem, this leads to an integrand $H[t, x, \dot{x}, y, \dot{y}] = \tfrac{1}{2}(y\dot{x} - x\dot{y})+\lambda(\dot{x}^{2} + \dot{y}^{2})^{1/2}$.
+
+	\begin{enumerate}[\hspace{6mm}(a)]
+		\item Do you know the answer to the question before doing any work? 
+		What curve will maximize area?
+
+		\item Use the first Euler-Lagrange equation above to obtain the equation $$y - C_{1} = -\frac{\lambda\dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}},$$ where $C_{1}$ is a constant.
+
+		\item Use the second Euler-Lagrange equation above to obtain the equation $$x - C_{2} = -\frac{\lambda\dot{y}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}},$$ where $C_{2}$ is a constant.
+
+		\item Rather than try to solve the differential equations do some algebra and combine the two formulas to obtain an algebraic description of the curve $C$ that maximizes area. 
+		What is the curve?
+
+		\item As a last little bit, if $P$ is the length of the curve $C$ (the perimeter), what is the value of $\lambda$?
+	\end{enumerate}
+	
+		\subsection*{Part (a)}
+		Do you know the answer to the question before doing any work? 
+		What curve will maximize area?
+
+		\begin{proof}[Solution]
+		My initial guess is that the closed curve with maximal enclosed area is a circle.
+		I don't have a great explanation behind the intuition leading me to this guess.
+		The best way to phrase my thinking is that a unit square has area 1, a unit circle has area $\pi$, and I can't think of a shape that could have a higher 'unit-area' than a circle.
+		It almost follows from the definition of a circle, in that it is \emph{all} of the points within a radius about a center point; this just seems like the most perimeter-efficient way to collect points in the plane.
+		\end{proof}
+		% subsection part_a (end)
+		\vspace*{2mm}
+		\hrule
+		\vspace*{2mm}
+		\pagebreak
+
+		\subsection*{Part (b)}
+		Use the first Euler-Lagrange equation above to obtain the equation $$y - C_{1} = -\frac{\lambda\dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}},$$ where $C_{1}$ is a constant.
+
+		\begin{proof}[Solution]
+		Let $H[t, x, \dot{x}, y, \dot{y}] = \tfrac{1}{2}(y\dot{x} - x\dot{y})+\lambda(\dot{x}^{2} + \dot{y}^{2})^{1/2}$.
+		For the E-L equation we need the following pieces.
+			\begin{align*}
+				\frac{\partial H}{\partial x}\left[ \frac{1}{2}(y\dot{x} - x\dot{y})+\lambda(\dot{x}^{2} + \dot{y}^{2})^{1/2} \right] &= \frac{1}{2} \frac{\partial H}{\partial x} (y\dot{x} - x\dot{y}) \\
+				&\hspace{5mm} + \lambda \frac{\partial H}{\partial x}\sqrt{\dot{x}^{2} + \dot{y}^{2}}, \\
+				&= -\frac{\dot{y}}{2} + 0, \\
+				&= -\dot{y}/2. \\
+				\\
+				\frac{\partial H}{\partial \dot{x}}\left[ \frac{1}{2}(y\dot{x} - x\dot{y})+\lambda(\dot{x}^{2} + \dot{y}^{2})^{1/2} \right] &= \frac{1}{2} \frac{\partial H}{\partial \dot{x}} (y\dot{x} - x\dot{y}) \\
+				&\hspace{5mm} + \lambda \frac{\partial H}{\partial \dot{x}}\sqrt{\dot{x}^{2} + \dot{y}^{2}}, \\
+				&= \frac{y}{2} + \frac{\lambda \, 2\dot{x}}{2 \sqrt{\dot{x}^{2} + \dot{y}^{2}}}, \\
+				&= \frac{y}{2} + \frac{\lambda \dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}}.
+			\end{align*}
+		Now we can use the E-L equation with $\dot{x}$,
+			\begin{align*}
+				- \frac{\dot{y}}{2} - \frac{d}{dt}\left[ \frac{y}{2} + \frac{\lambda \dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} \right] &= 0, \\
+				\frac{d}{dt}\left[ -\frac{y}{2} \right] - \frac{d}{dt}\left[ \frac{y}{2} + \frac{\lambda \dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} \right] &= 0, \\
+				\frac{d}{dt}\left[ -\frac{y}{2} - \frac{y}{2} - \frac{\lambda \dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} \right] &= 0, \\
+				\frac{d}{dt}\left[ -y - \frac{\lambda \dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} \right] &= 0.
+			\end{align*}
+		Therefore, we have 
+			\begin{align*}
+				-y - \frac{\lambda \dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} &= C_{1}, \\
+				y - C_{1} &= - \frac{\lambda \dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}}.
+			\end{align*}
+		for some constant $C_{1}$, as we aimed to show.			
+		\end{proof}
+		% subsection part_b (end)
+		\vspace*{2mm}
+		\hrule
+		\vspace*{2mm}
+
+		\subsection*{Part (c)}
+		Use the second Euler-Lagrange equation above to obtain the equation $$x - C_{2} = -\frac{\lambda\dot{y}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}},$$ where $C_{2}$ is a constant.
+
+		\begin{proof}[Solution]
+		Let $H[t, x, \dot{x}, y, \dot{y}] = \tfrac{1}{2}(y\dot{x} - x\dot{y})+\lambda(\dot{x}^{2} + \dot{y}^{2})^{1/2}$.
+		For the E-L equation we need the following pieces.
+			\begin{align*}
+				\frac{\partial H}{\partial y}\left[ \frac{1}{2}(y\dot{x} - x\dot{y})+\lambda(\dot{x}^{2} + \dot{y}^{2})^{1/2} \right] &= \frac{1}{2} \frac{\partial H}{\partial y} (y\dot{x} - x\dot{y}) \\
+				&\hspace{5mm} + \lambda \frac{\partial H}{\partial y}\sqrt{\dot{x}^{2} + \dot{y}^{2}}, \\
+				&= \frac{\dot{x}}{2} + 0, \\
+				&= \dot{x}/2. \\
+				\\
+				\frac{\partial H}{\partial \dot{y}}\left[ \frac{1}{2}(y\dot{x} - x\dot{y})+\lambda(\dot{x}^{2} + \dot{y}^{2})^{1/2} \right] &= \frac{1}{2} \frac{\partial H}{\partial \dot{y}} (y\dot{x} - x\dot{y}) \\
+				&\hspace{5mm} + \lambda \frac{\partial H}{\partial \dot{y}}\sqrt{\dot{x}^{2} + \dot{y}^{2}}, \\
+				&= -\frac{x}{2} + \frac{\lambda \, 2\dot{y}}{2 \sqrt{\dot{x}^{2} + \dot{y}^{2}}}, \\
+				&= -\frac{x}{2} + \frac{\lambda \dot{y}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}}.
+			\end{align*}
+		Now we can use the E-L equation with $\dot{y}$,
+			\begin{align*}
+				\frac{\dot{x}}{2} - \frac{d}{dt}\left[ -\frac{x}{2} + \frac{\lambda \dot{y}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} \right] &= 0, \\
+				\frac{d}{dt}\left[ \frac{x}{2} \right] - \frac{d}{dt}\left[ -\frac{x}{2} + \frac{\lambda \dot{y}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} \right] &= 0, \\
+				\frac{d}{dt}\left[ \frac{x}{2} + \frac{x}{2} - \frac{\lambda \dot{y}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} \right] &= 0, \\
+				\frac{d}{dt}\left[ x - \frac{\lambda \dot{y}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} \right] &= 0.
+			\end{align*}
+		Therefore, we have 
+			\begin{align*}
+				x - \frac{\lambda \dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}} &= C_{2}, \\
+				x - C_{2} &= \frac{\lambda \dot{x}}{\sqrt{\dot{x}^{2} + \dot{y}^{2}}}.
+			\end{align*}
+		for some constant $C_{2}$, as we aimed to show.		
+		\end{proof}
+		% subsection part_c (end)
+		\vspace*{2mm}
+		\hrule
+		\vspace*{2mm}
+
+		\subsection*{Part (d)}
+		Rather than try to solve the differential equations do some algebra and combine the two formulas to obtain an algebraic description of the curve $C$ that maximizes area. 
+		What is the curve?
+
+		\begin{proof}[Solution]
+		I used algebra a few different ways to solve for $C = C_{2}-C_{1}$, to solve for $dy/dx$ as well as $dx/dy$.
+		Finally I solved for $y$ and $x$ just to see if that would show me anything.
+		Unfortunately, in each case I was unable to arrive at a result that lended itself to using a de solver in sage.
+		\end{proof}
+		% subsection part_d (end)
+		\vspace*{2mm}
+		\hrule
+		\vspace*{2mm}
+
+		\subsection*{Part (e)}
+		As a last little bit, if $P$ is the length of the curve $C$ (the perimeter), what is the value of $\lambda$?
+
+		\begin{proof}[Solution]
+		My guess is that $\lambda = C/2\pi$, but that's just a guess.
+		\end{proof}
+		% subsection part_e (end)
+	% section problem_2 (end)
+\end{document}
+
+% http://www.uoduckstore.com/book-search-results?crn=40781,41279,40790,40788,40784 books

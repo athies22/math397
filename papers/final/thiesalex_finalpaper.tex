@@ -2,187 +2,126 @@
 \documentclass[letterpaper, 12pt]{amsart}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%% boilerplate packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\usepackage{amsmath,amssymb,amsthm}
-	\usepackage[mathscr]{euscript}
-	\usepackage{enumerate}
-	\usepackage{graphicx}
-	\usepackage{mathrsfs}
-	\usepackage{color}
-	\usepackage{hyperref}
-	\usepackage{verbatim}
-	\usepackage{stmaryrd}
-	\usepackage[margin=1.25in]{geometry}
-
-	\raggedbottom
+		\usepackage[margin=1.25in]{geometry}
+		\usepackage{amsmath,amssymb,amsthm,bm}
+		\usepackage{marvosym}
+		\usepackage[mathscr]{euscript}
+		\usepackage{enumerate}
+		\usepackage{graphicx}
+		\usepackage{mathrsfs}
+		\usepackage{color}
+		\usepackage{hyperref}
+		\usepackage{verbatim}
+		\usepackage{stmaryrd}
+		\usepackage{tikz}
+		\usetikzlibrary{arrows}
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%% rename the abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% \renewcommand{\abstractname}{Introduction}
+		% \renewcommand{\abstractname}{Introduction}
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% sets %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%% sets 
-		\DeclareMathOperator{\N}{\mathbb{N}}
-		\DeclareMathOperator{\Z}{\mathbb{Z}}
-		\DeclareMathOperator{\Zp}{\mathbb{Z}^{+}}
-		\DeclareMathOperator{\Q}{\mathbb{Q}}
-		\DeclareMathOperator{\Qp}{\mathbb{Q}^{+}}
-		\DeclareMathOperator{\Qc}{\mathbb{Q}^{c}}
-		\DeclareMathOperator{\R}{\mathbb{R}}
-		\DeclareMathOperator{\F}{\mathbb{F}}
-		\DeclareMathOperator{\Rp}{\mathbb{R}^{+}}
-		\DeclareMathOperator{\C}{\mathbb{C}}
-		\DeclareMathOperator{\Cnon}{\mathbb{C}^{\times}}
-		%% powerset of a set
-		\DeclareMathOperator{\pset}{\mathcal{P}}
-		%% set of continuous functions in a certain variable
-		\DeclareMathOperator{\cont}{\mathscr{C}}
-		%% set of functions in a certain variable
-		\DeclareMathOperator{\func}{\mathscr{F}}
-		%% area function
-		\DeclareMathOperator{\A}{\mathcal{A}}
-		
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% linear algebra %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		%% linear span
-		\DeclareMathOperator{\Ell}{\mathscr{L}}
-		%% bold vectors with arrows, and bold matrices
-		\newcommand{\bmat}[1]{{\mathbf{#1}}}
-		\newcommand{\bvec}[1]{{\vec{\mathbf{#1}}}}
-		%% independent vectors/matrices
-		\DeclareMathOperator{\ind}{\perp\!\!\!\perp}
-		%% order
-		\DeclareMathOperator{\ord}{\text{ord}}
+		\DeclareMathOperator{\N}{\mathbb{N}}				% natural numbers
+		\DeclareMathOperator{\Z}{\mathbb{Z}}				% integers
+		\DeclareMathOperator{\Zp}{\mathbb{Z}^{+}}			% positive integers
+		\DeclareMathOperator{\Q}{\mathbb{Q}}				% rationals
+		\DeclareMathOperator{\Qc}{\mathbb{Q}^{c}}			% irrationals
+		\DeclareMathOperator{\R}{\mathbb{R}}				% reals
+		\DeclareMathOperator{\F}{\mathbb{F}}				% a field
+		\DeclareMathOperator{\C}{\mathbb{C}}				% complex numbers
+		\DeclareMathOperator{\Cnon}{\mathbb{C}^{\times}}	% nonzero complex numbers
+		\DeclareMathOperator{\Pcal}{\mathcal{P}}			% powerset, or set of polynomials
+		\DeclareMathOperator{\Ell}{\mathscr{L}}				% set of linear maps, or linear operator
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%% probability & statistics %%%%%%%%%%%%%%%%%%%%%%%%%
-		%% probability, expectation, variance, etc.
-		\renewcommand{\Pr}{\mathbb{P}}
-		\DeclareMathOperator{\E}{\mathbb{E}}
-		\DeclareMathOperator{\var}{\rm Var}
-		\DeclareMathOperator{\sd}{\rm SD}
-		\DeclareMathOperator{\cov}{\rm Cov}
-		\DeclareMathOperator{\SE}{\rm SE}
-		\DeclareMathOperator{\ssreg}{{\rm SS}_{{\rm Reg}}}
-		\DeclareMathOperator{\ssr}{{\rm SS}_{{\rm Res}}}
-		\DeclareMathOperator{\sst}{{\rm SS}_{{\rm Tot}}}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% use pretty letters %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\DeclareMathOperator{\ep}{\varepsilon}				% epsilons
+		\DeclareMathOperator{\ph}{\varphi}					% phis
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% congruences %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% algebra %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\null}{\text{null }}					% null space
+		\DeclareMathOperator{\range}{\text{range }}			% range
+		\newcommand{\bmat}[1]{{\mathbf{#1}}}				% bold matrix
+		\newcommand{\bvec}[1]{{\vec{\mathbf{#1}}}}			% bold vector
+		\DeclareMathOperator{\ind}{\perp\!\!\!\perp}		% perpendicular, orthogonal
+		\DeclareMathOperator{\ord}{\text{ord}}				% order of a structure
+		\DeclareMathOperator{\Log}{Log}						% logarithm
+		\DeclareMathOperator{\Span}{Span}					% span
+		\newcommand{\pid}[1]{\langle #1 \rangle}			% bracket notation, used for 
+															% ideals or inner products
+		\newcommand{\norm}[1]{\mid \!\!#1 \!\!\mid}			%\norm{x} gives |x|
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% bracket notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		% I first used this for principal ideals, that is why the abbreviation is pid
-		\newcommand{\pid}[1]{\langle #1 \rangle}
-
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% fatdot notation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% fatdot notation
 		\makeatletter
 			\newcommand*\fatdot{\mathpalette\fatdot@{.5}}
 			\newcommand*\fatdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
 		\makeatother
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% use pretty letters %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\DeclareMathOperator{\ep}{\varepsilon}
-		\DeclareMathOperator{\ph}{\varphi}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%% probability & statistics %%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\Pr}{\mathbb{P}}						% probability
+		\DeclareMathOperator{\E}{\mathbb{E}}				% expectation
+		\DeclareMathOperator{\var}{\rm Var}					% variance
+		\DeclareMathOperator{\sd}{\rm SD}					% standard deviation
+		\DeclareMathOperator{\cov}{\rm Cov}					% covariance
+		\DeclareMathOperator{\SE}{\rm SE}					% standard error
+		\DeclareMathOperator{\ssreg}{{\rm SS}_{{\rm Reg}}}	% sum of squared regression
+		\DeclareMathOperator{\ssr}{{\rm SS}_{{\rm Res}}}	% sum of squared residuals
+		\DeclareMathOperator{\sst}{{\rm SS}_{{\rm Tot}}}	% total sum of squares
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%% stolen from Jeske/Dugger %%%%%%%%%%%%%%%%%%%%%%%%%
-	% Some theorem-like environments, all numbered together starting at 1
-	% in each section.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% number theory %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}		% congruences
 
-	% The default \theoremstyle is bold headings and italic body text.
-	\newtheorem{thm}{Theorem}[section]
-	\newtheorem{axe}[thm]{Axiom}
-	\newtheorem{cn}[thm]{Common Notion}
-	\newtheorem{defn}[thm]{Definition}
-	\newtheorem{prop}[thm]{Proposition}
-	\newtheorem{claim}[thm]{Claim}
-	\newtheorem{cor}[thm]{Corollary}
-	\newtheorem{lemma}[thm]{Lemma}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%% theorem environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% Some theorem-like environments, all numbered together starting at 1
+		% in each section.
 
-	\theoremstyle{definition}  % Bold headings and Roman body text.
-	\newtheorem{example}[thm]{Example}
-	\newtheorem{examples}[thm]{Examples}
-	\newtheorem{exercise}[thm]{Exercise}
-	\newtheorem{note}[thm]{Note}
-	\newtheorem{remark}[thm]{Remark}
-	\newtheorem{remarks}[thm]{Remarks}
-	\newtheorem{discussion}[thm]{Discussion}
+		\newtheorem{thm}{Theorem}[section]					% The default \theoremstyle is 
+		\newtheorem{defn}[thm]{Definition}					% bold headings and italic body text.
+		\newtheorem{prop}[thm]{Proposition}
+		\newtheorem{claim}[thm]{Claim}
+		\newtheorem{cor}[thm]{Corollary}
+		\newtheorem{lemma}[thm]{Lemma}
 
-	\newcommand{\dfn}{\textbf} % Make defined words bold.
-	\newcommand{\mdfn}[1]{\dfn{\mathversion{bold}#1}} % Even make math symbols bold
+		\theoremstyle{definition}  							% Bold headings and Roman body text.
+		\newtheorem{example}[thm]{Example}
+		\newtheorem{examples}[thm]{Examples}
+		\newtheorem{exercise}[thm]{Exercise}
+		\newtheorem{note}[thm]{Note}
+		\newtheorem{remark}[thm]{Remark}
+		\newtheorem{remarks}[thm]{Remarks}
+		\newtheorem{discussion}[thm]{Discussion}
 
-	% Various commands that are useful.  Please add your own.
+		\newcommand{\dfn}{\textbf} 							% Make defined words bold.
+		\newcommand{\mdfn}[1]{\dfn{\mathversion{bold}#1}} 	% Even make math symbols bold
 
-	\DeclareMathOperator{\Arg}{Arg}
-	\DeclareMathOperator{\re}{Re}
-	\DeclareMathOperator{\im}{Im}
-	\DeclareMathOperator{\Log}{Log}
-	\DeclareMathOperator{\Span}{Span}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% complex numbers %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\DeclareMathOperator{\Arg}{Arg}						% argument of z \in \C
+		\DeclareMathOperator{\re}{Re}						% real component
+		\DeclareMathOperator{\im}{Im}						% imaginary component
 
-	\newcommand{\iso}{\cong}						% isometric/congruent
-	\newcommand{\ra}{\rightarrow}                   % right arrow
-	\newcommand{\Ra}{\Rightarrow}                   % right implies
-	\newcommand{\lra}{\longrightarrow}              % long right arrow
-	\newcommand{\la}{\leftarrow}                    % left arrow
-	\newcommand{\La}{\Leftarrow}                    % left implies
-	\newcommand{\lla}{\longleftarrow}               % long left arrow
-	\newcommand{\llra}[1]{\stackrel{#1}{\lra}}      % labeled long right arrow
-	\newcommand{\we}{\llra{\sim}}                   % weak equivalence
-	\newcommand{\cof}{\rightarrowtail}              % cofibration
-	\newcommand{\fib}{\twoheadrightarrow}           % fibration
-	\newcommand{\inc}{\hookrightarrow}              % inclusion
-	\newcommand{\dbra}{\rightrightarrows}           % double arrow for equalizer diagrams
-	\newcommand{\eqra}{\llra{\sim}}                 % equivalence/isomorphism
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% various symbols %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\newcommand{\iso}{\cong}						% isometric/congruent
+		\newcommand{\ra}{\rightarrow}                   % right arrow
+		\newcommand{\Ra}{\Rightarrow}                   % right implies
+		\newcommand{\lra}{\longrightarrow}              % long right arrow
+		\newcommand{\la}{\leftarrow}                    % left arrow
+		\newcommand{\La}{\Leftarrow}                    % left implies
+		\newcommand{\lla}{\longleftarrow}               % long left arrow
+		\newcommand{\eqra}{\llra{\sim}}                 % equivalence/isomorphism
+		\newcommand{\blank}{\underbar{\ \ }}          	% An underscore, as in (__)xV
+		% \newcommand{\blank}{-}                          % A hyphen, as in (-)xV
+		\newcommand{\Id}{Id}                            % The identity functor
+		\newcommand{\und}{\underline}
+		\newcommand{\del}{\nabla}						% gradient vector
 
-	% \newcommand{\blank}{\underbar{\ \ }}          % An underscore, as in (__)xV
-	\newcommand{\blank}{-}                          % A hyphen, as in (-)xV
-	\newcommand{\Id}{Id}                            % The identity functor
-	\newcommand{\und}{\underline}
-	\newcommand{\norm}[1]{\mid \!\!#1 \!\!\mid}             %\norm{x} gives |x|
-
-	% These commands are for the period and comma in the lower right entry of
-	% a diagram.  They put the punctuation 2 pts to the right, but make
-	% TeX (and hence the diagram package) unaware of the extra width
-	% of that entry.
-	\newcommand{\period}    {{\makebox[0pt][l]{\hspace{2pt} .}}}
-	\newcommand{\comma}     {{\makebox[0pt][l]{\hspace{2pt} ,}}}
-	\newcommand{\semicolon} {{\makebox[0pt][l]{\hspace{2pt} ;}}}
-
-	\newcommand{\Cech}{\v{C}ech}
-	\newcommand{\scat}{\Delta}
-	\newcommand{\assign}{\ra}
-	\newcommand{\copr}{\,\amalg\,}
-	\newcommand{\ovcat}{\downarrow}
-	\newcommand{\pder}[2]{{\frac{\partial #1}{\partial #2}}}
-	\newcommand{\del}{\nabla}
-	\newcommand{\vectr}[1]{{\mbox{\boldmath $#1$}}}
-	\newcommand{\uvectr}[1]{\vectr{\hat #1}}
-	\newcommand{\ihat}{\uvectr \imath}
-	\newcommand{\jhat}{\uvectr \jmath}
-	\newcommand{\khat}{\uvectr k}
-	\newcommand{\rhat}{\uvectr r}
-	\newcommand{\thhat}{\uvectr \theta}
-	\newcommand{\zhat}{\uvectr z}
-	\newcommand{\rhohat}{\uvectr \rho}
-	\newcommand{\phihat}{\uvectr \phi}
-	\newcommand{\grad}{\vectr{\vec\nabla}}
-	% \newcommand{\R}{\mathbb{R}}
-	\newcommand{\vv}[1]{\vectr{v_{#1}}}
-	\newcommand{\crad}{0.1}
-	\newcommand{\lline}[1]{\overleftrightarrow{#1}}
-	\DeclareMathOperator{\area}{area}
-	\DeclareMathOperator{\vol}{vol}
-	\newcommand{\ray}[1]{\overset{\rightarrow}{#1}}
-	\newcommand{\sr}[2]{???}
-	\newcommand{\iihat}{i}
-	\newcommand{\jjhat}{j}
-	\newcommand{\kkhat}{k}
-
-	\renewcommand{\abstractname}{Comment}
+		\raggedbottom	
 \begin{document}
 	\title{[TITLE]}
 	\author{Alex Thies \\ \lowercase{athies@uoregon.edu}}
@@ -195,10 +134,155 @@
 	\tableofcontents
 	\newpage
 
+	\section*{Notes on Notation}
+	\label{sec:notes_on_notation}
+	Vectors will be bold with an arrow on top, i.e., $\bvec{v}$ is a vector.
+	All vectors herein will be elements of the vector space $\R^3$.
+	% section notes_on_notation (end)
+	\newpage
+
 	\pagenumbering{arabic}
-	\section{History}
-	\label{sec:history}
-	% section history (end)
+	\section{Introduction}
+		\subsection{Copernicus, Kepler, and Newton}
+		\label{sub:copernicus_kepler_and_newton}
+		% subsection copernicus_kepler_and_newton (end)
+
+		\subsection{Neptune \& Halley's Comet}
+		\label{sub:neptune_&_halley_s_comet}
+		% subsection neptune_&_halley_s_comet (end)
+
+		\subsection{Einstein and Space-time}
+		\label{sub:einstein_and_space_time}
+		% subsection einstein_and_space_time (end)
+	\label{sec:introduction}
+	% section introduction (end)
+	\newpage
+
+	\section{Fundamentals of Orbital Mechanics}
+	\label{sec:fundamentals_of_orbital_mechanics}
+		First we have to start with some basic definitions.
+
+		\begin{defn}[Distance]
+			The Euclidean distance formula for points $(x_{1},y_{1},z_{1}),(x_{2},y_{2},z_{2}) \in \R^3$ is $$d((x_{1},y_{1},z_{1}),(x_{2},y_{2},z_{2})) = \sqrt{(x_{1} - x_{2})^2 + (y_{1} - y_{2})^2 + (z_{1} - z_{2})^2}.$$
+			Note, this also works for points in $\R^2$, where $z_{1} = z_{2} = 0$.
+		\end{defn}
+
+		\begin{defn}[Circle]
+			Let $x,y,r,h,k \in \R$.
+			Then, we say that the set of points $(x,y)$ of equal distance $r$ from a point $(h,k)$ is a \textbf{circle}, i.e., $$C = \left\{ (x,y) : (x-h)^2 + (y-k)^2 = r^2 \text{ for $x,y,r \in \R$}\right\}$$ 
+		\end{defn}
+
+		\begin{defn}[Ellipse]
+			Let $x,y,a,b,h,k \in \R$.
+			Without loss of generality assume $b \leq a$.
+			Then, we say that the set $$E = \left\{ (x,y) : \tfrac{(x-h)^2}{a^2} + \tfrac{(y-k)^2}{b^2} = 1 \right\}$$ is an \textbf{ellipse} centered about the point $(h,k)$ whose \textbf{major axis} is of length $b$, and whose \textbf{minor axis} is of length $a$.
+			The \textbf{eccentricity} of an ellipse is defined as $$e = \sqrt{1 - \tfrac{b^2}{a^2}},$$ this helps us define the foci of an ellipse.
+			The two \textbf{foci} of an ellipse are points lying on the major axis, they are $F_{1} := (-ae,0)$ and $F_{2} := (ae,0)$.
+			With these characters we can also define an ellipse thus, $$E = \{ (x,y) : d((x,y),(-ae,0)) + d((x,y),(ae,0)) = 2a \}$$ where $d$ is the Euclidean distance.
+		\end{defn}
+	
+		\subsection{Newton's Laws}
+		\label{sub:newtons_laws}
+			\begin{thm}[Newton's 1st Law of Motion]
+			Every body persists in its state of being at rest or of moving uniformly straight forward, except insofar as it is compelled to change its state by force impressed.
+			\end{thm}
+			This describes what we call inertia, or uniform motion.
+			This statement has been refined over time, a modern statement of Newton's 1st Law is along the lines of: ``If the sum of force vectors acting on an object is zero, then and only then is the velocity of the object is zero.''
+			We can express this mathematically as $$\sum \bvec{F} = 0 \iff \frac{d\bvec{v}}{dt} = 0.$$
+
+			\begin{proof}
+			\end{proof}
+
+			\begin{thm}[Newton's 2nd Law of Motion]
+			The change of momentum of a body is proportional to the impulse impressed on the body, and happens along the straight line on which that impulse is impressed.
+			\end{thm}
+			Oftentimes this law is stated as ``force equals the product of mass and acceleration,'' however this is more of a consequence of the law, rather than a statement of the law itself.
+			Recall that momentum is defined as $\vec{\bm{\rho}} = m \bvec{v}$, where $m$ is a constant. 
+			Therefore in the language of differential calculus, we can describe the change of momentum of a body thus,
+				\begin{align*}
+					\bvec{F} &= \frac{d\vec{\bm{\rho}}}{dt}, \\
+					&= \frac{d(m\bvec{v})}{dt}, \\
+					&= m\frac{d\bvec{v}}{dt}, \\
+					&= m \bvec{a}.
+				\end{align*}
+			This ability to express the force on an object as a derivative is very useful when it comes to differential equations.
+
+			\begin{proof}
+			\end{proof}
+
+			\begin{thm}[Newton's 3rd Law of Motion]
+			To every action there is always opposed an equal reaction: or the mutual actions of two bodies upon each other are always equal, and directed to contrary parts.
+			\end{thm}
+			Most people know this law as ``every action has an equal and opposite reaction.''
+
+			\begin{proof}
+			\end{proof}
+
+			\begin{thm}[Newton's Law of Universal Gravitation]
+			Every point mass attracts every single other point mass by a force acting along the line intersecting both points. 
+			The force is proportional to the product of the two masses and inversely proportional to the square of the distance between them, $$\bvec{F}_{g} = \frac{GMm}{r^2}$$ where $\bvec{F}_{g}$ is the force of gravity; $G = 6.674 \times 10^{-11} \, m^3/kg \, s^2$ is the Gravitational constant; $M$ is the mass of larger object, $m$ the mass of the smaller one, and $r$ is the distance between them.
+			\end{thm}
+
+			\begin{proof}
+			\end{proof}
+		% subsection newtons_laws (end)
+
+		\subsection{Kepler's Laws of Planetary Motion}
+		\label{sub:kepler_s_laws_of_planetary_motion}
+			\begin{thm}[Kepler's 1st Law]
+			The orbit of a planet is an ellipse with the Sun at one of the two foci.
+			\end{thm}
+
+			\begin{thm}[Kepler's 2nd Law]
+			A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time.
+			\end{thm}
+
+			\begin{thm}[Kepler's 3rd Law]
+			The square of the orbital period of a planet is proportional to the cube of the semi-major axis of its orbit.
+			\end{thm}
+
+			\begin{proof}[Proof of all Three Laws]
+			We begin the proof by considering circular motion.
+			Let $C$ be a circle of radius $r$, and a particle $P$ lying on the boundary of $C$.
+			Let $T$ be the time required for $P$ to complete a full rotation around the bounadry of $C$ starting from a fixed point.
+			Then, the velocity $v$ of $P$ is $v = \tfrac{2\pi r}{T}$, and the acceleration $a = \tfrac{2\pi v}{T}$.
+			Solve each of these for $T$, equate them, and then solve for $a$.
+				\begin{align*}
+					\frac{2\pi r}{v} &= \frac{2\pi v}{a}, \\
+					ar &= v^2, \\
+					a &= \frac{v^2}{r}.
+				\end{align*}
+			With $a$ in terms of $v$, we can invoke Newton's Second Law, which states that the forces acting on $P$ can be written as $\bvec{F}_{p} = ma$.
+			With $a = v^2/r$, we have $$\bvec{F}_{p} = m \frac{v^2}{r}.$$
+			If we think of $v$ and $a$ as vectors, then $\bvec{v}$ is pointed in the direction of motion, tangent to $C$, and $\bvec{a}$ is pointed towards the center of $C$, i.e., $\bvec{v} \perp \bvec{a}$.
+			Therefore we can decompose the forces acting on $P$ into orthogonal components.
+
+			Our next goal is to generalize this theory to ellipses, and again decompose the forces acting on a particle travelling along an ellipse into orthogonal components.
+			The ideal coordinate system for this is polar coordinates on the complex plane $\C^2$.
+			Let $Q$ be a particle traveling along the boundary of an ellipse that is centered about the origin.
+			In polar coordinates over $\C^2$, we can write $Q = r e^{i\theta} = \cos(\theta) + i \sin(\theta)$.
+			Thus, the position of $Q$ is a function in two variables, call it $s(r,\theta)$.
+			As with the case of circular motion, we need to find ways of expressing the velocity and accleration of $Q$.
+			In this case, we do that by taking derivatives of $s$ with respect to time $t$.
+			We have
+				\begin{align*}
+					\frac{ds}{dt} &= \frac{dr}{dt}e^{i\theta} + r\frac{d\theta}{dt}e^{i(\theta + \pi/2)}; \\
+					\frac{d^2s}{dt^2} &= \left( \frac{d^2r}{dt^2} - r\left(\frac{d\theta}{dt}\right)^2 \right)e^{i\theta} + \left( 2\frac{dr}{dt}\frac{d\theta}{dt} + r\frac{d^2\theta}{dt^2} \right)e^{i(\theta + \pi/2)}; \\
+				\end{align*}
+			
+			\end{proof}
+		% subsection kepler_s_laws_of_planetary_motion (end)
+	% section fundamentals_of_orbital_mechanics (end)
+	\newpage
+
+	\section{The $n$-body Problem}
+	\label{sec:the_n-body_problem}
+	% section the_n-body_problem (end)
+	\newpage
+
+	\section{Conclusion}
+	\label{sec:conclusion}
+	% section conclusion (end)
 
 	\newpage
 	\appendix
